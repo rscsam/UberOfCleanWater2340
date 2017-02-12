@@ -9,6 +9,7 @@ public class RegistrationData {
     private static ArrayList<User> RegData;
 
     public RegistrationData() {
+        RegData = new ArrayList<>();
         RegData.add(new User("user", "pass"));
     }
 
