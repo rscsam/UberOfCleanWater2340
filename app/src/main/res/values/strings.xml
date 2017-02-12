@@ -16,4 +16,7 @@
     </string>
     <string name="register_button">Register</string>
     <string name="username_tv">Username:</string>
+    <string name="register_tv">Register:</string>
+    <string name="password_tv">Password:</string>
+    <string name="login_bttn">Login</string>
 </resources>

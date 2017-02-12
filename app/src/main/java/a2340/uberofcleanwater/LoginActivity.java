@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -15,10 +16,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void registerOnClick(View view) {
 
+        Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
     }
 
     public void loginOnClick(View view) {
-        
+
     }
 
     private void startWelcomeActivity() {

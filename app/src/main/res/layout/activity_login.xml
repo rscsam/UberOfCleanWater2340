@@ -12,7 +12,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/username_ll">
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/username_tv"
@@ -21,8 +22,42 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/username_et"/>
+            android:id="@+id/username_et"
+            android:maxLines="1" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_ll"
+        android:layout_below="@+id/username_ll"
+        android:layout_alignParentStart="true">
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/password_tv"
+            android:id="@+id/password_tv"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_et"
+            android:maxLines="1" />
+    </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/password_ll"
+        android:text="@string/login_bttn"
+        android:onClick="loginOnClick"
+        android:id="@+id/login_bttn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_bttn"
+        android:text="@string/register_button"
+        android:onClick="registerOnClick"
+        android:id="@+id/password_bttn" />
 </RelativeLayout>
