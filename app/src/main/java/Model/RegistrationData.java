@@ -14,12 +14,12 @@ public class RegistrationData {
     }
 
     public boolean addUser(String user, String password) {
-        User temp = new User(user, password);
-        if (!RegData.contains(temp)) {
-            RegData.add(temp);
-            return true;
+        for (User u : RegData) {
+            if (u.getName().equals(user))
+                return false;
         }
-        return false;
+        RegData.add(new User(user, password));
+        return true;
     }
 
     public boolean removeUser(String user) {

@@ -19,4 +19,6 @@
     <string name="register_tv">Register:</string>
     <string name="password_tv">Password:</string>
     <string name="login_bttn">Login</string>
+    <string name="welcome_to_the_uber_of_clean_water">Welcome to the Uber of Clean Water!</string>
+    <string name="logout">logout</string>
 </resources>

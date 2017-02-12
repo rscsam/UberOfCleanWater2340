@@ -11,15 +11,24 @@ import Model.RegistrationData;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private RegistrationData rd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        rd = new RegistrationData();
+
         setContentView(R.layout.activity_login);
     }
 
     public void registerOnClick(View view) {
-
-        Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
+        final EditText usernameET= (EditText) findViewById(R.id.username_et);
+        final EditText passwordET = (EditText) findViewById(R.id.password_et);
+        if (rd.addUser(usernameET.getText().toString(), passwordET.getText().toString()))
+            Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
     }
 
     public void loginOnClick(View view) {
@@ -27,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         String user = usernameET.getText().toString();
         String pass = passwordET.getText().toString();
-        RegistrationData rd = new RegistrationData();
         if (rd.userExists(user)) {
             if (rd.checkPassword(user, pass)) {
                 startWelcomeActivity();
