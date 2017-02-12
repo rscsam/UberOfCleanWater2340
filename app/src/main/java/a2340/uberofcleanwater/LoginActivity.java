@@ -31,7 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         if (rd.userExists(user)) {
             if (rd.checkPassword(user, pass)) {
                 startWelcomeActivity();
+            } else {
+                Toast.makeText(this, "Incorrect Password", Toast.LENGTH_LONG).show();
             }
+        } else {
+            Toast.makeText(this, "User Doesn't Exist", Toast.LENGTH_LONG).show();
         }
     }
 
