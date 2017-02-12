@@ -44,10 +44,16 @@ public class RegistrationData {
     }
 
     public boolean checkPassword(String user, String pass) {
-        User temp = new User(user, pass);
-        if (RegData.contains(temp)) {
-            return true;
+        User temp;
+        for (User name : RegData) {
+            if (name.getName().equals(user)) {
+                temp = name;
+                if(temp.checkPasword(pass)) {
+                    return true;
+                }
+            }
         }
         return false;
-    }
+
+
 }
