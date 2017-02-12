@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import Model.RegistrationData;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,7 +23,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginOnClick(View view) {
-
+        final EditText usernameET= (EditText) findViewById(R.id.username_et);
+        final EditText passwordET = (EditText) findViewById(R.id.password_et);
+        String user = usernameET.getText().toString();
+        String pass = passwordET.getText().toString();
+        RegistrationData rd = new RegistrationData();
+        if (rd.userExists(user)) {
+            if (rd.checkPassword(user, pass)) {
+                startWelcomeActivity();
+            }
+        }
     }
 
     private void startWelcomeActivity() {
