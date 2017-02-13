@@ -22,6 +22,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final EditText usernameET= (EditText) findViewById(R.id.username_et);
+        final EditText passwordET = (EditText) findViewById(R.id.password_et);
+        usernameET.setText("");
+        passwordET.setText("");
+    }
+
     public void registerOnClick(View view) {
         final EditText usernameET= (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
