@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         usernameET.setText("");
         passwordET.setText("");
+        usernameET.requestFocus();
     }
 
     public void registerOnClick(View view) {
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
+        passwordET.setText("");
     }
 
     public void loginOnClick(View view) {
