@@ -1,9 +1,11 @@
-package a2340.uberofcleanwater;
+package a2340.uberofcleanwater.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import a2340.uberofcleanwater.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

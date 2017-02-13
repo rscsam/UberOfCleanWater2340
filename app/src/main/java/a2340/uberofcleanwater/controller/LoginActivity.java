@@ -1,4 +1,4 @@
-package a2340.uberofcleanwater;
+package a2340.uberofcleanwater.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import Model.RegistrationData;
+import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.model.RegistrationData;
 
 public class LoginActivity extends AppCompatActivity {
 
