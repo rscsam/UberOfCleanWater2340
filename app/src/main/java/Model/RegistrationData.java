@@ -48,7 +48,7 @@ public class RegistrationData {
         for (User name : RegData) {
             if (name.getName().equals(user)) {
                 temp = name;
-                if (temp.checkPasword(pass)) {
+                if (temp.checkPassword(pass)) {
                     return true;
                 }
             }

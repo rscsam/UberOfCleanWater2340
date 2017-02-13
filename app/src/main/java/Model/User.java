@@ -17,11 +17,8 @@ public class User {
         return name;
     }
 
-    public boolean checkPasword(String password) {
-        if (password.equals(this.password)) {
-            return true;
-        }
-        return false;
+    public boolean checkPassword(String password) {
+        return password.equals(this.password);
     }
 
 
