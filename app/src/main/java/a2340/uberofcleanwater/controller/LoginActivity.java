@@ -8,7 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.model.RegistrationData;
+import a2340.uberofcleanwater.Model.RegistrationData;
+import a2340.uberofcleanwater.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     public void registerOnClick(View view) {
         final EditText usernameET= (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
-        if (rd.addUser(usernameET.getText().toString(), passwordET.getText().toString()))
+        if (rd.addUser(new User(usernameET.getText().toString(), passwordET.getText().toString())))
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
