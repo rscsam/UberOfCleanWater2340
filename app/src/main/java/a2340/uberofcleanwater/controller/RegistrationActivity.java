@@ -21,6 +21,10 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
     }
 
+    /**
+     * Attempts to register the user based on the provided data
+     * @param view the button being pressed
+     */
     public void registerOnClick(View view) {
         final EditText usernameET= (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
@@ -46,6 +50,10 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * exits the activity and returns to login screen
+     * @param view the TextView being pressed
+     */
     public void returnOnClick(View view) {
         finish();
     }

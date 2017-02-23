@@ -56,6 +56,10 @@ public class WelcomeActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * launches the EditProfileActivity and passes on the username
+     * @param view the button being pressed
+     */
     public void editProfileOnClick(View view) {
         Intent editProfile = new Intent(this, EditProfileActivity.class);
         editProfile.putExtra("username", currentUser.getUserName());

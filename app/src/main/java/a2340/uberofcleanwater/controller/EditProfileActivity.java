@@ -33,6 +33,10 @@ public class EditProfileActivity extends AppCompatActivity {
             addressET.setText(user.getHomeAddress());
     }
 
+    /**
+     * saves all the changes to the user object and then exits the activity
+     * @param view the button clicked
+     */
     public void saveOnClick(View view) {
         final EditText nameET = (EditText) findViewById(R.id.name_et);
         final EditText titleET = (EditText) findViewById(R.id.title_et);
