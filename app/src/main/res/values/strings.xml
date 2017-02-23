@@ -21,4 +21,20 @@
     <string name="login_bttn">Login</string>
     <string name="welcome_to_the_uber_of_clean_water">Welcome to the Uber of Clean Water!</string>
     <string name="logout">logout</string>
+    <string name="not_registered_yet_click_here_to_register">Not registered yet? Click here to register</string>
+    <string name="register">Register</string>
+    <string name="return_to_login">Return to login</string>
+    <string name="login_below">Login Below</string>
+    <string name="please_select_your_preferred_username_password_and_account_type">Please select your preferred username, password, and account type</string>
+    <string name="user">User</string>
+    <string name="worker">Worker</string>
+    <string name="manager">Manager</string>
+    <string name="admin">Admin</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="you_can_edit_your_profile_anytime">You can edit your profile anytime!</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="address">Address:</string>
+    <string name="email">Email:</string>
+    <string name="title">Title:</string>
+    <string name="name">Name:</string>
 </resources>

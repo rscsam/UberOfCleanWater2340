@@ -14,15 +14,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/welcome_to_the_uber_of_clean_water"
         android:id="@+id/welcome_tv"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_profile_bttn"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/welcome_tv"
+        android:text="@string/you_can_edit_your_profile_anytime"
+        android:id="@+id/edit_profile_tv"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/edit_profile"
+        android:onClick="editProfileOnClick"
+        android:id="@+id/edit_profile_bttn"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="15dp"
         android:text="@string/logout"
         android:onClick="logoutOnClick"
         android:id="@+id/logout_tv"

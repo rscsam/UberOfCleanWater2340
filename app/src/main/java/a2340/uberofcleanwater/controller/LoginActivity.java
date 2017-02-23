@@ -8,19 +8,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.Model.RegistrationData;
-import a2340.uberofcleanwater.Model.User;
+import a2340.uberofcleanwater.model.RegistrationData;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private RegistrationData rd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        rd = new RegistrationData();
-
+        setTitle("Login");
         setContentView(R.layout.activity_login);
     }
 
@@ -34,23 +29,26 @@ public class LoginActivity extends AppCompatActivity {
         usernameET.requestFocus();
     }
 
+    /**
+     * starts registration activity
+     * @param view the textview that was clicked
+     */
     public void registerOnClick(View view) {
-        final EditText usernameET= (EditText) findViewById(R.id.username_et);
-        final EditText passwordET = (EditText) findViewById(R.id.password_et);
-        if (rd.addUser(new User(usernameET.getText().toString(), passwordET.getText().toString())))
-            Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
-        passwordET.setText("");
+        Intent registrationActivity = new Intent(this, RegistrationActivity.class);
+        startActivity(registrationActivity);
     }
 
+    /**
+     * When "Login" button is pressed, attempt to login is made
+     * @param view the button pressed
+     */
     public void loginOnClick(View view) {
         final EditText usernameET= (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         String user = usernameET.getText().toString();
         String pass = passwordET.getText().toString();
-        if (rd.userExists(user)) {
-            if (rd.checkPassword(user, pass)) {
+        if (RegistrationData.userExists(user)) {
+            if (RegistrationData.checkPassword(user, pass)) {
                 startWelcomeActivity();
             } else {
                 Toast.makeText(this, "Incorrect Password", Toast.LENGTH_LONG).show();
@@ -60,8 +58,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Starts welcome activity upon successful login
+     */
     private void startWelcomeActivity() {
+        final EditText usernameET= (EditText) findViewById(R.id.username_et);
         Intent welcomeActivity = new Intent(this, WelcomeActivity.class);
+        welcomeActivity.putExtra("username", usernameET.getText().toString());
         startActivity(welcomeActivity);
     }
 }

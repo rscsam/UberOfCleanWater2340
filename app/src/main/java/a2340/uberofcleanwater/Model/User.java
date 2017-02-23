@@ -1,10 +1,8 @@
-package a2340.uberofcleanwater.Model;
+package a2340.uberofcleanwater.model;
 
 /**
  * Created by ander_000 on 2/12/2017.
  */
-
-import a2340.uberofcleanwater.Model.AccountType;
 
 /**
  * Class which holds information about the user.
@@ -28,7 +26,8 @@ public class User {
      * @param homeAddress - User's registered home address
      * @param title - User's title (optional)
      */
-    public User(String name, AccountType type, String userName, String password, String emailAddress, String homeAddress, String title) {
+    public User(String name, AccountType type, String userName, String password, String emailAddress,
+                String homeAddress, String title) {
         this.name = name;
         this.type = type;
         this.userName = userName;
@@ -39,7 +38,7 @@ public class User {
     }
 
     /**
-     * Old constructor
+     * Old constructor for backwards compatibility
      * @param userName - User's login id
      * @param password - User's login password
      */
@@ -96,7 +95,11 @@ public class User {
         return title;
     }
 
-    public boolean checkPassword(String password) {
+    public boolean isProfileComplete() {
+        return name != null && emailAddress != null && title != null && homeAddress != null;
+    }
+
+    boolean checkPassword(String password) {
         return password.equals(this.password);
     }
 

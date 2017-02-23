@@ -1,4 +1,4 @@
-package a2340.uberofcleanwater.Model;
+package a2340.uberofcleanwater.model;
 
 /**
  * Created by ander_000 on 2/12/2017.
@@ -8,7 +8,6 @@ package a2340.uberofcleanwater.Model;
  * Class which holds information about the user, but only allows viewing of the user fields (excluding password).
  * Password can be checked against a given string.
  */
-import a2340.uberofcleanwater.Model.User;
 
 public class UserView {
     private User user;
@@ -43,7 +42,7 @@ public class UserView {
     }
 
     /**
-     * Old constructor
+     * Old constructor for backwards compat
      * @param userName - User's login id
      * @param password - User's login password
      */

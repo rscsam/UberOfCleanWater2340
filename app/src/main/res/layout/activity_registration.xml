@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
+    android:id="@+id/activity_registration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="a2340.uberofcleanwater.controller.LoginActivity">
-
+    tools:context="a2340.uberofcleanwater.controller.RegistrationActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/username_ll"
+        android:textSize="18sp"
+        android:layout_above="@id/username_ll"
         android:paddingBottom="20dp"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:text="@string/login_below"/>
+        android:text="@string/please_select_your_preferred_username_password_and_account_type"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,9 +24,10 @@
         android:id="@+id/username_ll">
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:labelFor="@+id/username_et"
             android:text="@string/username_tv"
             android:id="@+id/username_tv"
-        />
+            />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,11 +39,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/password_ll"
-        android:layout_above="@+id/login_bttn"
+        android:layout_above="@+id/account_type_rg"
         android:layout_alignParentStart="true">
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/password_tv"
+            android:labelFor="@id/password_et"
             android:id="@+id/password_tv"
             />
         <EditText
@@ -55,22 +55,50 @@
             android:inputType="textPassword" />
     </LinearLayout>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_bttn"
+        android:id="@+id/account_type_rg">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/user"
+            android:id="@+id/user_rb"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/worker"
+            android:id="@+id/worker_rb"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manager"
+            android:id="@+id/manager_rb"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/admin"
+            android:id="@+id/admin_rb"/>
+    </RadioGroup>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/login_bttn"
-        android:onClick="loginOnClick"
-        android:id="@+id/login_bttn"/>
+        android:text="@string/register"
+        android:onClick="registerOnClick"
+        android:id="@+id/register_bttn"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/not_registered_yet_click_here_to_register"
-        android:id="@+id/registration_prompt_tv"
-        android:layout_below="@+id/login_bttn"
-        android:paddingTop="10dp"
-        android:layout_centerHorizontal="true"
         android:textColor="@android:color/holo_blue_bright"
-        android:onClick="registerOnClick"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:layout_below="@id/register_bttn"
+        android:onClick="returnOnClick"
+        android:text="@string/return_to_login"/>
 </RelativeLayout>

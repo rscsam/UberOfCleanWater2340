@@ -1,4 +1,4 @@
-package a2340.uberofcleanwater.Model;
+package a2340.uberofcleanwater.model;
 
 /**
  * Created by Seth Triplett on 2/21/2017.
