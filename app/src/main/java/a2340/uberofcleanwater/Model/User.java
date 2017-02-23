@@ -163,7 +163,11 @@ public class User {
      * @return true if the profile is complete, false otherwise
      */
     public boolean isProfileComplete() {
-        return name != null && emailAddress != null && title != null && homeAddress != null;
+        if (name == null || emailAddress == null || title == null || homeAddress == null) {
+            return false;
+        } else {
+            return !(name.isEmpty() || emailAddress.isEmpty() || title.isEmpty() || homeAddress.isEmpty());
+        }
     }
 
     /**
