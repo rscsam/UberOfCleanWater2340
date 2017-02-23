@@ -14,6 +14,10 @@ public class RegistrationData {
      * @return - true if the user is successfully added, false if otherwise.
      */
     public static boolean addUser(User user) {
+        if (user.getUserName().isEmpty() || user.getPassword().isEmpty()) {
+            return false;
+        }
+
         for (User u : RegData) {
             if (u.getUserName().equals(user.getUserName()))
                 return false;

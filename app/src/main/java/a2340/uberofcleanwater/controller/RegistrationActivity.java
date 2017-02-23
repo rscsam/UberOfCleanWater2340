@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
      * @param view the button being pressed
      */
     public void registerOnClick(View view) {
-        final EditText usernameET= (EditText) findViewById(R.id.username_et);
+        final EditText usernameET = (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         final RadioGroup rg = (RadioGroup) findViewById(R.id.account_type_rg);
         int selection = rg.getCheckedRadioButtonId();
@@ -41,9 +41,12 @@ public class RegistrationActivity extends AppCompatActivity {
             accountType = AccountType.Admin;
 
         if (RegistrationData.addUser(new User(null, accountType, usernameET.getText().toString(),
-                passwordET.getText().toString(), null, null, null ))) {
+                passwordET.getText().toString(), null, null, null))) {
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
             finish();
+        } else if (usernameET.getText().toString().isEmpty() || passwordET.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Username or password is blank", Toast.LENGTH_LONG).show();
+            passwordET.setText("");
         } else {
             Toast.makeText(this, "User already exists", Toast.LENGTH_LONG).show();
             passwordET.setText("");
