@@ -10,6 +10,13 @@ import android.widget.Toast;
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.RegistrationData;
 
+/**
+ * Activity which handles login
+ *
+ * @author Sam Costley
+ * @version 1.0
+ * @since 2017-02-12
+ */
 public class LoginActivity extends AppCompatActivity {
 
     @Override

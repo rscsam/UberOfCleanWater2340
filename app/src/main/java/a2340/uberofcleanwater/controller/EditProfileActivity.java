@@ -9,6 +9,13 @@ import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
 
+/**
+ * Activity which allows users to edit their profiles
+ *
+ * @author Sam Costley
+ * @version 1.0
+ * @since 2017-02-21
+ */
 public class EditProfileActivity extends AppCompatActivity {
 
     private User user;

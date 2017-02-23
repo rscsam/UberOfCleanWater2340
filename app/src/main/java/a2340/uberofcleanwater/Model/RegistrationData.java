@@ -2,7 +2,11 @@ package a2340.uberofcleanwater.model;
 import java.util.ArrayList;
 
 /**
- * Created by ander_000 on 2/12/2017.
+ * Singleton which holds user registration data
+ *
+ * @author Ryan Anderson
+ * @version 1.0
+ * @since 2017-02-12
  */
 
 public class RegistrationData {
@@ -86,6 +90,8 @@ public class RegistrationData {
     }
 
     /**
+     * Returns an instance of the class
+     *
      * @return an instance of the RegistrationData class
      */
     public static RegistrationData getInstance() {

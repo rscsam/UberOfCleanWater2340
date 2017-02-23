@@ -12,6 +12,14 @@ import a2340.uberofcleanwater.model.AccountType;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
 
+/**
+ * Activity which handles registration
+ *
+ * @author Sam Costley
+ * @author Ryan Anderson
+ * @version 1.0
+ * @since 2017-02-22
+ */
 public class RegistrationActivity extends AppCompatActivity {
 
     @Override
