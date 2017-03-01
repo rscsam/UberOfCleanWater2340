@@ -1,6 +1,7 @@
 package a2340.uberofcleanwater.controller;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,22 +9,29 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.database.UserDbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 
 /**
  * Activity which handles login
  *
  * @author Sam Costley
+ * @author Ryan Anderson
  * @version 1.0
  * @since 2017-02-12
  */
 public class LoginActivity extends AppCompatActivity {
+
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Login");
         setContentView(R.layout.activity_login);
+
+        UserDbHelper mDbHelper = new UserDbHelper(this);
+        db = mDbHelper.getWritableDatabase();
     }
 
     @Override
@@ -54,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         String user = usernameET.getText().toString();
         String pass = passwordET.getText().toString();
-        if (RegistrationData.userExists(user)) {
-            if (RegistrationData.checkPassword(user, pass)) {
+        if (RegistrationData.userExists(db, user)) {
+            if (RegistrationData.checkPassword(db, user, pass)) {
                 startWelcomeActivity();
             } else {
                 Toast.makeText(this, "Incorrect Password", Toast.LENGTH_LONG).show();
@@ -73,5 +81,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent welcomeActivity = new Intent(this, WelcomeActivity.class);
         welcomeActivity.putExtra("username", usernameET.getText().toString());
         startActivity(welcomeActivity);
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 }

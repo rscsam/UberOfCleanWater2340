@@ -1,5 +1,6 @@
 package a2340.uberofcleanwater.controller;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.database.UserDbHelper;
 import a2340.uberofcleanwater.model.AccountType;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
@@ -22,11 +24,15 @@ import a2340.uberofcleanwater.model.User;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Register");
         setContentView(R.layout.activity_registration);
+        UserDbHelper mDbHelper = new UserDbHelper(this);
+        db = mDbHelper.getWritableDatabase();
     }
 
     /**
@@ -48,7 +54,7 @@ public class RegistrationActivity extends AppCompatActivity {
         else
             accountType = AccountType.Admin;
 
-        if (RegistrationData.addUser(new User(null, accountType, usernameET.getText().toString(),
+        if (RegistrationData.addUser(db, new User(null, accountType, usernameET.getText().toString(),
                 passwordET.getText().toString(), null, null, null))) {
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
             finish();
@@ -67,5 +73,11 @@ public class RegistrationActivity extends AppCompatActivity {
      */
     public void returnOnClick(View view) {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 }
