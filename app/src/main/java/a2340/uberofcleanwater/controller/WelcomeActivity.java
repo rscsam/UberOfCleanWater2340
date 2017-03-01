@@ -21,6 +21,8 @@ import a2340.uberofcleanwater.model.User;
  *
  * @author Sam Costley
  * @author Ryan Anderson
+ * @author Sylvia Necula
+ * @author Anna Bergstrom
  * @version 1.0
  * @since 2017-02-12
  */
@@ -28,7 +30,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private User currentUser;
     private String currentUserName;
-    private AccountType currentAccountType;
     private SQLiteDatabase db;
 
     @Override
@@ -42,7 +43,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         currentUserName = getIntent().getStringExtra("username");
         currentUser = RegistrationData.getUserByUsername(db, currentUserName);
-        currentAccountType = currentUser.getType();
         final TextView welcomeTV = (TextView) findViewById(R.id.welcome_tv);
         welcomeTV.setText("Welcome to the Uber of Clean Water " + currentUser.getUserName() + "!");
         checkProfile();
@@ -91,6 +91,10 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    /**
+     * launches the SubmitReportActivity
+     * @param view the button being pressed
+     */
     public void submitReportOnClick(View view) {
         Intent submitReport = new Intent(this, SubmitReportActivity.class);
         startActivity(submitReport);

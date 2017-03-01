@@ -96,7 +96,7 @@ public class WaterReport {
 
     /**
      * Getter for the WaterCondition of the report.
-     * @return - the water codition as specified in the report.
+     * @return - the water condition as specified in the report.
      */
     public WaterCondition getCondition() {
         return condition;

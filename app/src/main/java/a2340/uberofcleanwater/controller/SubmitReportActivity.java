@@ -1,7 +1,6 @@
 package a2340.uberofcleanwater.controller;
 
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,15 +9,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.model.RegistrationData;
-import a2340.uberofcleanwater.model.User;
-import a2340.uberofcleanwater.model.WaterCondition;
-import a2340.uberofcleanwater.model.WaterType;
-import a2340.uberofcleanwater.model.Model;
+import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
 
 /**
- * Created by annabergstrom on 23/02/17.
+ * Creates a new water report
+ *
+ * @author Anna Bergstrom
+ * @author Sylvia Necula
+ * @version 1.0
+ * @since 2017-02-28
  */
 
 public class SubmitReportActivity extends AppCompatActivity{
@@ -58,10 +58,14 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String waterTypeET = (String) ((Spinner) findViewById(R.id.waterType_in)).getSelectedItem();
         final String waterConditionET = (String) ((Spinner) findViewById(R.id.waterCondition_in)).getSelectedItem();
         WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(latitudeET), Double.parseDouble(longitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
-        Model.addReport(waterReport);
+        ReportList.addReport(waterReport);
         finish();
     }
 
+    /**
+     * cancels the activity
+     * @param view the button pressed
+     */
     public void onCancelPressed(View view) {
         finish();
     }
