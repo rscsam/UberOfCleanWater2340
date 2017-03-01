@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
@@ -64,9 +65,21 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String longitudeET = ((EditText) findViewById(R.id.longitude_in)).getText().toString();
         final String waterTypeET = (String) ((Spinner) findViewById(R.id.waterType_in)).getSelectedItem();
         final String waterConditionET = (String) ((Spinner) findViewById(R.id.waterCondition_in)).getSelectedItem();
-        WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(latitudeET), Double.parseDouble(longitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
-        ReportList.addReport(db, waterReport);
-        finish();
+
+        if (latitudeET.isEmpty() || longitudeET.isEmpty()) {
+            Toast.makeText(this, "Latitude or Longitude is blank", Toast.LENGTH_LONG).show();
+        } else {
+            try {
+                Double.parseDouble(latitudeET);
+                Double.parseDouble(longitudeET);
+                WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(latitudeET), Double.parseDouble(longitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
+                ReportList.addReport(db, waterReport);
+                Toast.makeText(this, "Submission Successful", Toast.LENGTH_LONG).show();
+                finish();
+            } catch (NumberFormatException ex) {
+                Toast.makeText(this, "Latitude or Longitude is not a number", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     /**
