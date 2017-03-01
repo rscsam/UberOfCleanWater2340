@@ -92,11 +92,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void submitReportOnClick(View view) {
-        if(!currentAccountType.equals(AccountType.User)) {
-            Intent submitReport = new Intent(this, SubmitReportActivity.class);
-            startActivity(submitReport);
-        } else {
-            Toast.makeText(this, "You don't have permission to submit a water report", Toast.LENGTH_LONG).show();
-        }
+        Intent submitReport = new Intent(this, SubmitReportActivity.class);
+        startActivity(submitReport);
+
     }
 }
