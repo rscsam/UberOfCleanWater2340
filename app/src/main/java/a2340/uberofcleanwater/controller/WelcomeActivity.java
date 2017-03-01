@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.model.AccountType;
 import a2340.uberofcleanwater.database.UserDbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
@@ -26,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private User currentUser;
     private String currentUserName;
+    private AccountType currentAccountType;
     private SQLiteDatabase db;
 
     @Override
@@ -39,6 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         currentUserName = getIntent().getStringExtra("username");
         currentUser = RegistrationData.getUserByUsername(db, currentUserName);
+        currentAccountType = currentUser.getType();
         final TextView welcomeTV = (TextView) findViewById(R.id.welcome_tv);
         welcomeTV.setText("Welcome to the Uber of Clean Water " + currentUser.getUserName() + "!");
         checkProfile();
@@ -85,5 +89,14 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onDestroy() {
         db.close();
         super.onDestroy();
+    }
+
+    public void submitReportOnClick(View view) {
+        if(!currentAccountType.equals(AccountType.User)) {
+            Intent submitReport = new Intent(this, SubmitReportActivity.class);
+            startActivity(submitReport);
+        } else {
+            Toast.makeText(this, "You don't have permission to submit a water report", Toast.LENGTH_LONG).show();
+        }
     }
 }

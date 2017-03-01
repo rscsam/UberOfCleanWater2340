@@ -45,4 +45,15 @@
         android:id="@+id/logout_tv"
         android:clickable="true"
         android:textColor="@android:color/holo_blue_bright" />
+
+    <Button
+        android:text="Submit Water Report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_profile_bttn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:onClick="submitReportOnClick"
+        android:id="@+id/submitButton" />
+
 </RelativeLayout>

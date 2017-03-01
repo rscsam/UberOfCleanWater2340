@@ -1,6 +1,8 @@
 package a2340.uberofcleanwater.model;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Object designed to hold information for a user created water report.
@@ -15,10 +17,14 @@ public class WaterReport {
     private Date createdDate;
     private int reportNum;
     private String author;
-    private int longitude;
-    private int latitude;
+    private Double longitude;
+    private Double latitude;
     private WaterType type;
     private WaterCondition condition;
+
+    public static List<String> legalTypes = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
+    public static List<String> legalConditions = Arrays.asList("Waste", "Treatable/Clear", "Treatable/Muddy", "Potable");
+
 
     /**
      * Constructor with necessary parameters.
@@ -29,7 +35,7 @@ public class WaterReport {
      * @param type - Type of the water (bottled, lake, etc...)
      * @param condition - Condition of the water (potable, waste, etc...)
      */
-    public WaterReport(String author, int longitude, int latitude, WaterType type, WaterCondition condition) {
+    public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition) {
         createdDate = new Date();
         reportNum = idNum;
         idNum++;
@@ -68,7 +74,7 @@ public class WaterReport {
      * Getter for the longitude.
      * @return - longitude of the report.
      */
-    public int getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
@@ -76,7 +82,7 @@ public class WaterReport {
      * Getter for the latitude.
      * @return - latitude of the report
      */
-    public int getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
@@ -94,5 +100,23 @@ public class WaterReport {
      */
     public WaterCondition getCondition() {
         return condition;
+    }
+
+    public static WaterCondition stringToWC(String waterCondition) {
+        for (WaterCondition wc: WaterCondition.values()) {
+            if (wc.toString().equals(waterCondition)) {
+                return wc;
+            }
+        }
+        return null;
+    }
+
+    public static WaterType stringToWT(String waterType) {
+        for (WaterType wt: WaterType.values()) {
+            if (wt.toString().equals(waterType)) {
+                return wt;
+            }
+        }
+        return null;
     }
 }
