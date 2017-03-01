@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.database.UserDbHelper;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.AccountType;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
@@ -31,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Register");
         setContentView(R.layout.activity_registration);
-        UserDbHelper mDbHelper = new UserDbHelper(this);
+        DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
     }
 

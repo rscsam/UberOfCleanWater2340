@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.database.UserDbHelper;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
 
@@ -34,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         setTitle("Welcome!");
 
-        UserDbHelper mDbHelper = new UserDbHelper(this);
+        DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
 
         currentUserName = getIntent().getStringExtra("username");

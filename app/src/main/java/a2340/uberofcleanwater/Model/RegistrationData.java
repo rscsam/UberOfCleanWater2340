@@ -1,12 +1,9 @@
 package a2340.uberofcleanwater.model;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import java.security.SecureRandom;
 
-import a2340.uberofcleanwater.database.UserContract;
-import a2340.uberofcleanwater.database.UserDbHelper;
+import a2340.uberofcleanwater.database.DbContract;
 
 /**
  * Singleton which holds user registration data
@@ -33,15 +30,15 @@ public class RegistrationData {
             return false;
         } else {
             ContentValues values = new ContentValues();
-            values.put(UserContract.UserEntry.COLUMN_NAME_USERNAME, user.getUserName());
-            values.put(UserContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE, user.getType().ordinal());
-            values.put(UserContract.UserEntry.COLUMN_NAME_NAME, user.getName());
-            values.put(UserContract.UserEntry.COLUMN_NAME_PASSWORD, user.getPassword());
-            values.put(UserContract.UserEntry.COLUMN_NAME_EMAIL, user.getEmailAddress());
-            values.put(UserContract.UserEntry.COLUMN_NAME_ADDRESS, user.getHomeAddress());
-            values.put(UserContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
+            values.put(DbContract.UserEntry.COLUMN_NAME_USERNAME, user.getUserName());
+            values.put(DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE, user.getType().ordinal());
+            values.put(DbContract.UserEntry.COLUMN_NAME_NAME, user.getName());
+            values.put(DbContract.UserEntry.COLUMN_NAME_PASSWORD, user.getPassword());
+            values.put(DbContract.UserEntry.COLUMN_NAME_EMAIL, user.getEmailAddress());
+            values.put(DbContract.UserEntry.COLUMN_NAME_ADDRESS, user.getHomeAddress());
+            values.put(DbContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
 
-            db.insert(UserContract.UserEntry.TABLE_NAME, null, values);
+            db.insert(DbContract.UserEntry.TABLE_NAME, null, values);
         }
         return true;
     }
@@ -53,9 +50,9 @@ public class RegistrationData {
      * @return - true if the user is successfully removed, false if otherwise.
      */
     public static boolean removeUser(SQLiteDatabase db, String userName) {
-        String selection = UserContract.UserEntry.COLUMN_NAME_USERNAME + " LIKE ?";
+        String selection = DbContract.UserEntry.COLUMN_NAME_USERNAME + " LIKE ?";
         String[] selectionArgs = {userName};
-        int success = db.delete(UserContract.UserEntry.TABLE_NAME, selection, selectionArgs);
+        int success = db.delete(DbContract.UserEntry.TABLE_NAME, selection, selectionArgs);
 
         return (success > 0);
     }
@@ -69,14 +66,14 @@ public class RegistrationData {
     public static boolean userExists(SQLiteDatabase db, String userName) {
 
         String[] projection = {
-                UserContract.UserEntry.COLUMN_NAME_USERNAME,
+                DbContract.UserEntry.COLUMN_NAME_USERNAME,
         };
 
-        String selection = UserContract.UserEntry.COLUMN_NAME_USERNAME + " = ?";
+        String selection = DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?";
         String[] selectionArgs = {userName};
 
         Cursor c = db.query(
-                UserContract.UserEntry.TABLE_NAME,  // The table to query
+                DbContract.UserEntry.TABLE_NAME,  // The table to query
                 projection,                         // The columns to return
                 selection,                          // The columns for the where clause
                 selectionArgs,                      // The values for the where clause
@@ -86,7 +83,7 @@ public class RegistrationData {
         );
         String name = null;
         if(c.moveToFirst()) {
-            name = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_USERNAME));
+            name = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
         }
         c.close();
 
@@ -106,17 +103,17 @@ public class RegistrationData {
      */
     public static boolean checkPassword(SQLiteDatabase db, String userName, String pass) {
         String[] projection = {
-                UserContract.UserEntry._ID,
-                UserContract.UserEntry.COLUMN_NAME_USERNAME,
-                UserContract.UserEntry.COLUMN_NAME_PASSWORD
+                DbContract.UserEntry._ID,
+                DbContract.UserEntry.COLUMN_NAME_USERNAME,
+                DbContract.UserEntry.COLUMN_NAME_PASSWORD
         };
 
-        String selection = UserContract.UserEntry.COLUMN_NAME_USERNAME + " = ? AND " +
-                UserContract.UserEntry.COLUMN_NAME_PASSWORD + " =?";
+        String selection = DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ? AND " +
+                DbContract.UserEntry.COLUMN_NAME_PASSWORD + " =?";
         String[] selectionArgs = {userName, pass};
 
         Cursor c = db.query(
-                UserContract.UserEntry.TABLE_NAME,  // The table to query
+                DbContract.UserEntry.TABLE_NAME,  // The table to query
                 projection,                         // The columns to return
                 selection,                          // The columns for the where clause
                 selectionArgs,                      // The values for the where clause
@@ -127,8 +124,8 @@ public class RegistrationData {
         String name = null;
         String password = null;
         if(c.moveToFirst()) {
-            name = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_USERNAME));
-            password = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_PASSWORD));
+            name = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
+            password = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_PASSWORD));
         }
         c.close();
 
@@ -143,21 +140,21 @@ public class RegistrationData {
      */
     public static User getUserByUsername(SQLiteDatabase db, String username) {
         String[] projection = {
-                UserContract.UserEntry._ID,
-                UserContract.UserEntry.COLUMN_NAME_USERNAME,
-                UserContract.UserEntry.COLUMN_NAME_PASSWORD,
-                UserContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE,
-                UserContract.UserEntry.COLUMN_NAME_NAME,
-                UserContract.UserEntry.COLUMN_NAME_EMAIL,
-                UserContract.UserEntry.COLUMN_NAME_ADDRESS,
-                UserContract.UserEntry.COLUMN_NAME_TITLE
+                DbContract.UserEntry._ID,
+                DbContract.UserEntry.COLUMN_NAME_USERNAME,
+                DbContract.UserEntry.COLUMN_NAME_PASSWORD,
+                DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE,
+                DbContract.UserEntry.COLUMN_NAME_NAME,
+                DbContract.UserEntry.COLUMN_NAME_EMAIL,
+                DbContract.UserEntry.COLUMN_NAME_ADDRESS,
+                DbContract.UserEntry.COLUMN_NAME_TITLE
         };
 
-        String selection = UserContract.UserEntry.COLUMN_NAME_USERNAME + " = ?";
+        String selection = DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?";
         String[] selectionArgs = {username};
 
         Cursor c = db.query(
-                UserContract.UserEntry.TABLE_NAME,  // The table to query
+                DbContract.UserEntry.TABLE_NAME,  // The table to query
                 projection,                         // The columns to return
                 selection,                          // The columns for the where clause
                 selectionArgs,                      // The values for the where clause
@@ -168,13 +165,13 @@ public class RegistrationData {
         String user, pass, name, email, address, title;
         AccountType type = null;
         if(c.moveToFirst()) {
-            user = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_USERNAME));
-            pass = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_PASSWORD));
-            type = AccountType.values()[c.getInt(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE))];
-            name = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_NAME));
-            email = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_EMAIL));
-            address = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_ADDRESS));
-            title = c.getString(c.getColumnIndex(UserContract.UserEntry.COLUMN_NAME_TITLE));
+            user = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
+            pass = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_PASSWORD));
+            type = AccountType.values()[c.getInt(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE))];
+            name = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_NAME));
+            email = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_EMAIL));
+            address = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_ADDRESS));
+            title = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_TITLE));
         } else {
             c.close();
             return null;
@@ -193,16 +190,16 @@ public class RegistrationData {
      */
     public static boolean editUserData(SQLiteDatabase db, User user) {
         ContentValues values = new ContentValues();
-        values.put(UserContract.UserEntry.COLUMN_NAME_USERNAME, user.getUserName());
-        values.put(UserContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE, user.getType().ordinal());
-        values.put(UserContract.UserEntry.COLUMN_NAME_NAME, user.getName());
-        values.put(UserContract.UserEntry.COLUMN_NAME_PASSWORD, user.getPassword());
-        values.put(UserContract.UserEntry.COLUMN_NAME_EMAIL, user.getEmailAddress());
-        values.put(UserContract.UserEntry.COLUMN_NAME_ADDRESS, user.getHomeAddress());
-        values.put(UserContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
+        values.put(DbContract.UserEntry.COLUMN_NAME_USERNAME, user.getUserName());
+        values.put(DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE, user.getType().ordinal());
+        values.put(DbContract.UserEntry.COLUMN_NAME_NAME, user.getName());
+        values.put(DbContract.UserEntry.COLUMN_NAME_PASSWORD, user.getPassword());
+        values.put(DbContract.UserEntry.COLUMN_NAME_EMAIL, user.getEmailAddress());
+        values.put(DbContract.UserEntry.COLUMN_NAME_ADDRESS, user.getHomeAddress());
+        values.put(DbContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
 
         String[] arg = {user.getUserName()};
-        int success = db.update(UserContract.UserEntry.TABLE_NAME, values, UserContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
+        int success = db.update(DbContract.UserEntry.TABLE_NAME, values, DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
 
         return (success > 0);
     }

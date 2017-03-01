@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.database.UserDbHelper;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 
 /**
@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         setTitle("Login");
         setContentView(R.layout.activity_login);
 
-        UserDbHelper mDbHelper = new UserDbHelper(this);
+        DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
     }
 

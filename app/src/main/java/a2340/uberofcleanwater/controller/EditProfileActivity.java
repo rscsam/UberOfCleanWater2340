@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import a2340.uberofcleanwater.R;
-import a2340.uberofcleanwater.database.UserDbHelper;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
 
@@ -30,7 +30,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         setTitle("Edit Profile");
 
-        UserDbHelper mDbHelper = new UserDbHelper(this);
+        DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
 
         user = RegistrationData.getUserByUsername(db, getIntent().getStringExtra("username"));
