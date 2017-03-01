@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Submit Water Report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitWaterReport"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:paddingTop="50px"
+        android:paddingLeft="20px"/>
+
+    <TextView
+        android:text="Latitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/latitude"
+        android:paddingTop="100px"
+        android:paddingLeft="20px"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:ems="10"
+        android:id="@+id/latitude_in"
+        android:paddingLeft="20px"/>
+
+    <TextView
+        android:text="Longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/longitude"
+        android:paddingTop="70px"
+        android:paddingLeft="20px"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0.00"
+        android:ems="10"
+        android:id="@+id/longitude_in"
+        android:paddingLeft="20px"/>
+
+    <TextView
+        android:text="Water type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterType"
+        android:paddingTop="70px"
+        android:paddingLeft="20px"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterType_in"
+        android:paddingLeft="20px"/>
+
+    <TextView
+        android:text="Water condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterCondition"
+        android:paddingTop="70px"
+        android:paddingLeft="20px"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/waterCondition_in"
+        android:paddingLeft="20px"/>
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitButton"
+        android:onClick="onSubmitPressed"/>
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:onClick="onCancelPressed"/>
+
+</LinearLayout>
