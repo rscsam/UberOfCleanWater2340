@@ -23,6 +23,7 @@
         <activity android:name=".controller.WelcomeActivity" />
         <activity android:name=".controller.RegistrationActivity" />
         <activity android:name=".controller.EditProfileActivity"></activity>
+        <activity android:name=".controller.SubmitReportActivity"></activity>
     </application>
 
 </manifest>

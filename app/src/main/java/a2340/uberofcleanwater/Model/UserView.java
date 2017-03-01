@@ -1,12 +1,12 @@
 package a2340.uberofcleanwater.model;
 
 /**
- * Created by ander_000 on 2/12/2017.
- */
-
-/**
  * Class which holds information about the user, but only allows viewing of the user fields (excluding password).
  * Password can be checked against a given string.
+ *
+ * @author Ryan Anderson
+ * @version 1.0
+ * @since 2017-02-12
  */
 
 public class UserView {

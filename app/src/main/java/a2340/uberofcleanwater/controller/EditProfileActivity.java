@@ -1,24 +1,39 @@
 package a2340.uberofcleanwater.controller;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.RegistrationData;
 import a2340.uberofcleanwater.model.User;
 
+/**
+ * Activity which allows users to edit their profiles
+ *
+ * @author Sam Costley
+ * @author Ryan Anderson
+ * @version 1.0
+ * @since 2017-02-21
+ */
 public class EditProfileActivity extends AppCompatActivity {
 
     private User user;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         setTitle("Edit Profile");
-        user = RegistrationData.getUserByUsername(getIntent().getStringExtra("username"));
+
+        DbHelper mDbHelper = new DbHelper(this);
+        db = mDbHelper.getWritableDatabase();
+
+        user = RegistrationData.getUserByUsername(db, getIntent().getStringExtra("username"));
         final EditText nameET = (EditText) findViewById(R.id.name_et);
         final EditText titleET = (EditText) findViewById(R.id.title_et);
         final EditText emailET = (EditText) findViewById(R.id.email_et);
@@ -31,6 +46,7 @@ public class EditProfileActivity extends AppCompatActivity {
             emailET.setText(user.getEmailAddress());
         if (user.getHomeAddress() != null)
             addressET.setText(user.getHomeAddress());
+
     }
 
     /**
@@ -46,6 +62,14 @@ public class EditProfileActivity extends AppCompatActivity {
         user.setTitle(titleET.getText().toString());
         user.setEmailAddress(emailET.getText().toString());
         user.setHomeAddress(addressET.getText().toString());
+
+        RegistrationData.editUserData(db, user);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 }
