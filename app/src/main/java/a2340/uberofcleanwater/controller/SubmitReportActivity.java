@@ -1,6 +1,7 @@
 package a2340.uberofcleanwater.controller;
 
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
 
@@ -17,6 +19,7 @@ import a2340.uberofcleanwater.model.WaterReport;
  *
  * @author Anna Bergstrom
  * @author Sylvia Necula
+ * @author Ryan Anderson
  * @version 1.0
  * @since 2017-02-28
  */
@@ -24,6 +27,7 @@ import a2340.uberofcleanwater.model.WaterReport;
 public class SubmitReportActivity extends AppCompatActivity{
 
     private String username;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class SubmitReportActivity extends AppCompatActivity{
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter2);
 
+        DbHelper mDbHelper = new DbHelper(this);
+        db = mDbHelper.getWritableDatabase();
+
     }
 
 
@@ -58,7 +65,7 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String waterTypeET = (String) ((Spinner) findViewById(R.id.waterType_in)).getSelectedItem();
         final String waterConditionET = (String) ((Spinner) findViewById(R.id.waterCondition_in)).getSelectedItem();
         WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(latitudeET), Double.parseDouble(longitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
-        ReportList.addReport(waterReport);
+        ReportList.addReport(db, waterReport);
         finish();
     }
 
@@ -68,5 +75,11 @@ public class SubmitReportActivity extends AppCompatActivity{
      */
     public void onCancelPressed(View view) {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 }

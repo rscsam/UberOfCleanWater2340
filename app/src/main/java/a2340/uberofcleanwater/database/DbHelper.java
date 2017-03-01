@@ -36,8 +36,8 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbContract.WaterReportEntry.COLUMN_NAME_DATE + " TEXT," +
                     DbContract.WaterReportEntry.COLUMN_NAME_NUM + " INTEGER," +
                     DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR + " TEXT," +
-                    DbContract.WaterReportEntry.COLUMN_NAME_LONG + " INTEGER," +
-                    DbContract.WaterReportEntry.COLUMN_NAME_LAT + " INTEGER," +
+                    DbContract.WaterReportEntry.COLUMN_NAME_LONG + " REAL," +
+                    DbContract.WaterReportEntry.COLUMN_NAME_LAT + " REAL," +
                     DbContract.WaterReportEntry.COLUMN_NAME_TYPE + " INTEGER," +
                     DbContract.WaterReportEntry.COLUMN_NAME_CONDITION + " INTEGER)";
 

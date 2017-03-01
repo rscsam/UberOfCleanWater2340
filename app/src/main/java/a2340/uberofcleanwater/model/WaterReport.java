@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Object designed to hold information for a user created water report.
  * @author Seth Triplett
+ * @author Ryan Anderson
  * @version 1.0
  * @since 2017-02-23
  */
@@ -25,6 +26,27 @@ public class WaterReport {
     public static List<String> legalTypes = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
     public static List<String> legalConditions = Arrays.asList("Waste", "Treatable/Clear", "Treatable/Muddy", "Potable");
 
+    /**
+     * Constructor with necessary parameters
+     * Does not automatically generate createdDate and reportNum
+     * Used for pulling WaterReports out of the database
+     * @param author - The name of the user who submitted the report
+     * @param longitude - Longitude entered by the user
+     * @param latitude - Latitude entered by the user
+     * @param type - Type of the water (bottled, lake, etc...)
+     * @param condition - Condition of the water (potable, waste, etc...)
+     * @param date - The date the report was created
+     * @param idNum - The ID number of the report
+     */
+    public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition, Date date, int idNum) {
+        createdDate = date;
+        reportNum = idNum;
+        this.author = author;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.type = type;
+        this.condition = condition;
+    }
 
     /**
      * Constructor with necessary parameters.
