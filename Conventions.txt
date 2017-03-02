@@ -38,4 +38,34 @@ For XML layout files
             For text sizes, you should use sp.  textSize=12sp
             For everything else, you should use dp.
         
-        
+
+Making an activity work with the database
+
+    There are 3 steps to making an activity work with the database:
+    
+    1. make 
+            private SQLiteDatabase db; 
+       an instance variable of the class
+       
+    2. put 
+            DbHelper mDbHelper = new DbHelper(this);
+            db = mDbHelper.getWritableDatabase();
+       in the onCreate() method of the class
+       
+    3. put
+            /**
+            * cancels the activity
+             * @param view the button pressed
+             */
+            public void onCancelPressed(View view) {
+                finish();
+            }
+
+            @Override
+            protected void onDestroy() {
+                db.close();
+                super.onDestroy();
+            }
+      in the activity
+      
+     Also, ensure that anytime you need to save data, you're passing SQLiteDatabase db as a parameter to an outside method
