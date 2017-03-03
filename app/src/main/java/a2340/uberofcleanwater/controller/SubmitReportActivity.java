@@ -37,8 +37,8 @@ public class SubmitReportActivity extends AppCompatActivity{
         setTitle("Submit Report");
         username = getIntent().getStringExtra("username");
 
-        Spinner conditionSpinner = (Spinner) findViewById(R.id.waterCondition_in);
-        Spinner typeSpinner = (Spinner) findViewById(R.id.waterType_in);
+        Spinner conditionSpinner = (Spinner) findViewById(R.id.water_condition_in);
+        Spinner typeSpinner = (Spinner) findViewById(R.id.water_type_in);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, WaterReport.legalConditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -63,8 +63,8 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String nameET = username;
         final String latitudeET = ((EditText) findViewById(R.id.latitude_in)).getText().toString();
         final String longitudeET = ((EditText) findViewById(R.id.longitude_in)).getText().toString();
-        final String waterTypeET = (String) ((Spinner) findViewById(R.id.waterType_in)).getSelectedItem();
-        final String waterConditionET = (String) ((Spinner) findViewById(R.id.waterCondition_in)).getSelectedItem();
+        final String waterTypeET = (String) ((Spinner) findViewById(R.id.water_type_in)).getSelectedItem();
+        final String waterConditionET = (String) ((Spinner) findViewById(R.id.water_condition_in)).getSelectedItem();
 
         if (latitudeET.isEmpty() || longitudeET.isEmpty()) {
             Toast.makeText(this, "Latitude or Longitude is blank", Toast.LENGTH_LONG).show();
