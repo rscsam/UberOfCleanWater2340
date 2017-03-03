@@ -55,5 +55,13 @@
         android:layout_marginTop="65dp"
         android:onClick="submitReportOnClick"
         android:id="@+id/submit_button" />
+    
+    <Button
+        android:text="@string/view_current_reports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submit_bttnn"
+        android:onClick="viewReportsOnclick"
+        android:id="@+id/viewreports_bttn"/>
 
 </RelativeLayout>
