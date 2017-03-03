@@ -48,7 +48,7 @@ public class ReportList {
      * @param db the database being accessed
      * @return an arraylist of water reports
      */
-    public static ArrayList getReportList(SQLiteDatabase db) {
+    public static ArrayList<WaterReport> getReportList(SQLiteDatabase db) {
         ArrayList<WaterReport> list = new ArrayList<>();
 
         String[] projection = {
@@ -62,7 +62,7 @@ public class ReportList {
         };
 
         Cursor c = db.query(
-                DbContract.UserEntry.TABLE_NAME,  // The table to query
+                DbContract.WaterReportEntry.TABLE_NAME,  // The table to query
                 projection,                         // The columns to return
                 null,                          // The columns for the where clause
                 null,                      // The values for the where clause
@@ -77,7 +77,7 @@ public class ReportList {
             double latitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LAT));
             double longitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LONG));
             WaterCondition condition = WaterCondition.values()[c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION))];
-            WaterType type = WaterType.values()[c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_TYPE)];
+            WaterType type = WaterType.values()[c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_TYPE))];
 
             String target = c.getString(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_DATE));
             DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy", Locale.US);
