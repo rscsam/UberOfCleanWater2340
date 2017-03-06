@@ -100,4 +100,9 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(submitReport);
 
     }
+
+    public void viewReportsOnclick(View view) {
+        Intent viewReports = new Intent(this, ViewReportsActivity.class);
+        startActivity(viewReports);
+    }
 }

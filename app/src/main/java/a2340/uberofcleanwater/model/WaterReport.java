@@ -8,6 +8,7 @@ import java.util.List;
  * Object designed to hold information for a user created water report.
  * @author Seth Triplett
  * @author Ryan Anderson
+ * @author Sam Costley
  * @version 1.0
  * @since 2017-02-23
  */

@@ -21,6 +21,7 @@ import a2340.uberofcleanwater.model.WaterReport;
  * @author Anna Bergstrom
  * @author Sylvia Necula
  * @author Ryan Anderson
+ * @author Sam Costley
  * @version 1.0
  * @since 2017-02-28
  */

@@ -37,4 +37,6 @@
     <string name="email">Email:</string>
     <string name="title">Title:</string>
     <string name="name">Name:</string>
+    <string name="submit_water_report">Submit Water Report</string>
+    <string name="view_current_reports">View Current Reports</string>
 </resources>

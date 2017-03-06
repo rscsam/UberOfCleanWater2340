@@ -47,13 +47,21 @@
         android:textColor="@android:color/holo_blue_bright" />
 
     <Button
-        android:text="Submit Water Report"
+        android:text="@string/submit_water_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_profile_bttn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
         android:onClick="submitReportOnClick"
-        android:id="@+id/submitButton" />
+        android:id="@+id/submit_bttnn" />
+
+    <Button
+        android:text="@string/view_current_reports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submit_bttnn"
+        android:onClick="viewReportsOnclick"
+        android:id="@+id/viewreports_bttn"/>
 
 </RelativeLayout>
