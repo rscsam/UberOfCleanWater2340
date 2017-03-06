@@ -1,0 +1,71 @@
+/**
+* This file will outline some general conventions and instructions that should be followed while making the app
+* so that the project is easily readable and editable by everyone and to minimize warnings and errors
+*/
+
+For XML layout files
+
+    id -
+        Every view in a layout file should contain an id
+        The id should be the very last attribute in the XML tag
+        ids should not contain capital letters
+            No camelcase.  Not submitBttn but submit_bttn
+                This is xml convention and not just android layout
+        
+    layout types -
+        The main overall wrapping layout should never be a LinearLayout
+            The exception to this is if the LinearLayout only contains other layouts
+            The reason for this is LinearLayouts make it very hard to make subtle changes later on
+            Try RelativeLayout for a similar difficulty-level but much more room to work with
+    
+    strings -
+        You should never hardcode a string into a view.
+            This means do not say android:text="Submit Water Report"
+            Luckily, android makes an automatic way to fix this.
+                1. Hardcode the string like I mentioned above.  A warning will appear.
+                2. Click and place the cursor over the string.  A yellow lightbulb will appear on the left.
+                3. Click on the lightbulb, and select "Extract String Resource"
+                4. You can use the default settings, and press okay
+                5. You're done!
+            This allows you to access these strings in the Java and makes sweeping change much easier
+            If you want to access these string values, go to res->values->strings.xml
+            If you want to access a specific String in Java, call R.string.string_name
+     
+     sizes -
+        For every size, you need to include a density.
+            You cannot say size=25, but instead you may say something like size=25dp
+            You should never use 'px', as it will not work on different screen sizes
+            For text sizes, you should use sp.  textSize=12sp
+            For everything else, you should use dp.
+        
+
+Making an activity work with the database
+
+    There are 3 steps to making an activity work with the database:
+    
+    1. make 
+            private SQLiteDatabase db; 
+       an instance variable of the class
+       
+    2. put 
+            DbHelper mDbHelper = new DbHelper(this);
+            db = mDbHelper.getWritableDatabase();
+       in the onCreate() method of the class
+       
+    3. put
+            /**
+            * cancels the activity
+             * @param view the button pressed
+             */
+            public void onCancelPressed(View view) {
+                finish();
+            }
+
+            @Override
+            protected void onDestroy() {
+                db.close();
+                super.onDestroy();
+            }
+      in the activity
+      
+     Also, ensure that anytime you need to save data, you're passing SQLiteDatabase db as a parameter to an outside method

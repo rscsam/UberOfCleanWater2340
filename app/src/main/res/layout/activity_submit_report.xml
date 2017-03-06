@@ -1,89 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-        android:text="Submit Water Report"
+        android:text="@string/submit_water_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submitWaterReport"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:paddingTop="50px"
-        android:paddingLeft="20px"/>
+        android:id="@+id/submit_water_report"/>
+
+    <Button
+        android:text="@string/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCancelPressed"
+        android:id="@+id/cancel_button"
+        android:layout_marginBottom="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="59dp" />
+
+    <Button
+        android:text="@string/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmitPressed"
+        android:id="@+id/submit_button"
+        android:layout_alignBaseline="@+id/cancel_button"
+        android:layout_alignBottom="@+id/cancel_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="54dp" />
 
     <TextView
-        android:text="Latitude"
+        android:text="@string/water_condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_condition"
+        android:layout_below="@+id/submit_water_report"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_condition_in"
+        android:layout_below="@+id/water_condition"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_0_00"
+        android:ems="10"
+        android:id="@+id/latitude_in"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/submit_button" />
+
+    <TextView
+        android:text="@string/water_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/water_type"
+        android:layout_below="@+id/water_condition_in"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:text="@string/latitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/latitude"
-        android:paddingTop="100px"
-        android:paddingLeft="20px"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="0.00"
-        android:ems="10"
-        android:id="@+id/latitude_in"
-        android:paddingLeft="20px"/>
+        android:layout_above="@+id/latitude_in"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Longitude"
+        android:text="@string/longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/longitude"
-        android:paddingTop="70px"
-        android:paddingLeft="20px"/>
+        android:layout_below="@+id/latitude_in"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0.00"
+        android:text="@string/_0_00"
         android:ems="10"
         android:id="@+id/longitude_in"
-        android:paddingLeft="20px"/>
-
-    <TextView
-        android:text="Water type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/waterType"
-        android:paddingTop="70px"
-        android:paddingLeft="20px"/>
+        android:layout_alignTop="@+id/longitude"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/waterType_in"
-        android:paddingLeft="20px"/>
+        android:id="@+id/water_type_in"
+        android:layout_below="@+id/water_type"
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Water condition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/waterCondition"
-        android:paddingTop="70px"
-        android:paddingLeft="20px"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/waterCondition_in"
-        android:paddingLeft="20px"/>
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/submitButton"
-        android:onClick="onSubmitPressed"/>
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancelButton"
-        android:onClick="onCancelPressed"/>
-
-</LinearLayout>
+</RelativeLayout>
