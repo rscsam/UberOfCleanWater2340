@@ -76,12 +76,12 @@ public class SubmitReportActivity extends AppCompatActivity{
                 Double longitude = Double.parseDouble(longitudeET);
 
                 if ((lat < -90) || (lat > 90) || (longitude < -180) || (longitude > 180)) {
+                    Toast.makeText(this, "Longitude or Latitude is an invalid number", Toast.LENGTH_LONG).show();
+                } else {
                     WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(latitudeET), Double.parseDouble(longitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
                     ReportList.addReport(db, waterReport);
                     Toast.makeText(this, "Submission Successful", Toast.LENGTH_LONG).show();
                     finish();
-                } else {
-                    Toast.makeText(this, "Longitude or Latitude is an invalid number", Toast.LENGTH_LONG).show();
                 }
 
             } catch (NumberFormatException ex) {
