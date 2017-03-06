@@ -13,24 +13,28 @@ import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.WaterReport;
 
 /**
- * Created by sam on 3/1/17.
+ * Serves as an adapter for the view reports recycler view
+ *
+ * @author Sam Costley
+ * @version 1.0
+ * @since 2017-03-01
  */
 
 public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.ViewHolder> {
     private ArrayList<WaterReport> mDataset;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView coordsTV;
-        public TextView dateTV;
-        public TextView reportNumTV;
-        public TextView authorTV;
-        public TextView waterTypeTV;
-        public TextView conditionTV;
+    /**
+     * A ViewHolder that encapsulates all the information contained in each RecyclerView item
+     */
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView coordsTV;
+        TextView dateTV;
+        TextView reportNumTV;
+        TextView authorTV;
+        TextView waterTypeTV;
+        TextView conditionTV;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             coordsTV = (TextView) v.findViewById(R.id.coords_tv);
             dateTV = (TextView) v.findViewById(R.id.date_tv);
@@ -41,12 +45,15 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+    /**
+     * A constructor for the adapter that initializes the dataset with given WaterReports
+     *
+     * @param myDataset  the waterReports being viewed
+     */
     public WaterReportAdapter(ArrayList<WaterReport> myDataset) {
         mDataset = myDataset;
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public WaterReportAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
@@ -57,21 +64,24 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         return new ViewHolder(waterReportView);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         WaterReport wr = mDataset.get(position);
-        holder.coordsTV.setText("(" + wr.getLatitude() + ", " + wr.getLongitude() + ") ");
-        holder.dateTV.setText(wr.getDate().toString() + " ");
+        holder.coordsTV.setText("(" + wr.getLatitude() + ", " + wr.getLongitude() + ")");
+        holder.dateTV.setText(wr.getDate().toString().substring(4, 10) + wr.getDate().toString().substring(23));
         holder.authorTV.setText(wr.getAuthor());
-        holder.conditionTV.setText(wr.getCondition().toString() + " ");
-        holder.waterTypeTV.setText(wr.getType().toString() + " ");
-        holder.reportNumTV.setText("" + wr.getReportNum() + " ");
+
+        String condition = wr.getCondition().toString();
+        if (condition.equals("TreatableClear"))
+            condition = "Treatable/Clear";
+        else if (condition.equals("Treatable/Muddy"))
+            condition = "TreatableMuddy";
+        holder.conditionTV.setText(condition);
+
+        holder.waterTypeTV.setText(wr.getType().toString());
+        holder.reportNumTV.setText("" + wr.getReportNum());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return mDataset.size();

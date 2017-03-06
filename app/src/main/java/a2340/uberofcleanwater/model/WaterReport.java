@@ -125,7 +125,17 @@ public class WaterReport {
         return condition;
     }
 
+    /**
+     * Takes a String from the database and finds the corresponding WaterCondition value
+     *
+     * @param waterCondition the String representation
+     * @return the enum representation
+     */
     public static WaterCondition stringToWC(String waterCondition) {
+        if (waterCondition.equals("Treatable/Clear"))
+            waterCondition = "TreatableClear";
+        else if (waterCondition.equals("Treatable/Muddy"))
+            waterCondition = "TreableMuddy";
         for (WaterCondition wc: WaterCondition.values()) {
             if (wc.toString().equals(waterCondition)) {
                 return wc;
@@ -134,6 +144,12 @@ public class WaterReport {
         return null;
     }
 
+    /**
+     * Takes a String from the database and finds the corresponding WaterType value
+     *
+     * @param waterType the String representation
+     * @return the enum representation
+     */
     public static WaterType stringToWT(String waterType) {
         for (WaterType wt: WaterType.values()) {
             if (wt.toString().equals(waterType)) {

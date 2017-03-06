@@ -97,6 +97,7 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     public void submitReportOnClick(View view) {
         Intent submitReport = new Intent(this, SubmitReportActivity.class);
+        submitReport.putExtra("username", currentUser.getUserName());
         startActivity(submitReport);
 
     }

@@ -61,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/submit_bttnn"
+        android:layout_centerHorizontal="true"
         android:onClick="viewReportsOnclick"
         android:id="@+id/viewreports_bttn"/>
 

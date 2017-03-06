@@ -67,6 +67,7 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String waterTypeET = (String) ((Spinner) findViewById(R.id.water_type_in)).getSelectedItem();
         final String waterConditionET = (String) ((Spinner) findViewById(R.id.water_condition_in)).getSelectedItem();
 
+
         if (latitudeET.isEmpty() || longitudeET.isEmpty()) {
             Toast.makeText(this, "Latitude or Longitude is blank", Toast.LENGTH_LONG).show();
         } else {

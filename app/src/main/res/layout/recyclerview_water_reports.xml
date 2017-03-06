@@ -8,40 +8,45 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         tools:ignore="UselessParent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
             android:id="@+id/report_num_tv"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/report_num_tv"
             android:id="@+id/coords_tv"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/coords_tv"
             android:id="@+id/date_tv"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_below="@id/date_tv"
             android:layout_toEndOf="@id/coords_tv"
             android:id="@+id/author_tv"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/date_tv"
             android:id="@+id/water_condition_tv"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_below="@id/water_condition_tv"
             android:layout_toEndOf="@id/date_tv"
             android:id="@+id/water_type_tv"/>
