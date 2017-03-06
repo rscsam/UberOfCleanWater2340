@@ -13,8 +13,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Database.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Database.db";
 
     private static final String SQL_CREATE_ENTRIES_USER =
             "CREATE TABLE " + DbContract.UserEntry.TABLE_NAME + " (" +
