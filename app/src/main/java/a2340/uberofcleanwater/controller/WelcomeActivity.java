@@ -102,6 +102,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * launches the ViewReportActivity
+     * @param view the button being pressed
+     */
     public void viewReportsOnclick(View view) {
         Intent viewReports = new Intent(this, ViewReportsActivity.class);
         startActivity(viewReports);
