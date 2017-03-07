@@ -74,8 +74,8 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         String condition = wr.getCondition().toString();
         if (condition.equals("TreatableClear"))
             condition = "Treatable/Clear";
-        else if (condition.equals("Treatable/Muddy"))
-            condition = "TreatableMuddy";
+        else if (condition.equals("TreatableMuddy"))
+            condition = "Treatable/Muddy";
         holder.conditionTV.setText(condition);
 
         holder.waterTypeTV.setText(wr.getType().toString());

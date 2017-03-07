@@ -135,7 +135,7 @@ public class WaterReport {
         if (waterCondition.equals("Treatable/Clear"))
             waterCondition = "TreatableClear";
         else if (waterCondition.equals("Treatable/Muddy"))
-            waterCondition = "TreableMuddy";
+            waterCondition = "TreatableMuddy";
         for (WaterCondition wc: WaterCondition.values()) {
             if (wc.toString().equals(waterCondition)) {
                 return wc;
