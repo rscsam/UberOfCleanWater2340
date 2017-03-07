@@ -19,13 +19,6 @@
         android:text="@string/welcome_to_the_uber_of_clean_water"
         android:id="@+id/welcome_tv"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_profile_bttn"
-        android:layout_centerHorizontal="true"
-        android:text="@string/you_can_edit_your_profile_anytime"
-        android:id="@+id/edit_profile_tv"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,5 +57,22 @@
         android:layout_centerHorizontal="true"
         android:onClick="viewReportsOnclick"
         android:id="@+id/viewreports_bttn"/>
+
+    <Button
+        android:text="@string/view_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_profile_bttn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:onClick="mapOnclick"
+        android:id="@+id/viewmap_buttn"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/you_can_edit_your_profile_anytime"
+        android:id="@+id/edit_profile_tv"
+        android:layout_above="@+id/edit_profile_bttn"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

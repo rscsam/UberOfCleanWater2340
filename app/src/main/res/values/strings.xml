@@ -46,4 +46,6 @@
     <string name="submit_water_report">Submit Water Report</string>
     <string name="cancel">Cancel</string>
     <string name="view_current_reports">View Current Reports</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="view_map">View Map</string>
 </resources>

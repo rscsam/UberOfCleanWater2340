@@ -103,6 +103,16 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
+     * launches the MapsActivity
+     * @param view the button being pressed
+     */
+    public void mapOnclick(View view) {
+        Intent map = new Intent(this, MapsActivity.class);
+        map.putExtra("username", currentUser.getUserName());
+        startActivity(map);
+    }
+
+    /**
      * launches the ViewReportActivity
      * @param view the button being pressed
      */

@@ -1,0 +1,18 @@
+<resources>
+    <!--
+    
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=39:A6:7B:C8:C0:84:AB:3A:CE:CC:F2:87:B0:E7:64:6C:B2:FC:6E:17%3Ba2340.uberofcleanwater.controller
+
+    You can also add your credentials to an existing key, using this line:
+    39:A6:7B:C8:C0:84:AB:3A:CE:CC:F2:87:B0:E7:64:6C:B2:FC:6E:17;a2340.uberofcleanwater.controller
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCAOsZkNRugvfdG0pzTn9Qns7DAG7iViL8</string>
+</resources>
