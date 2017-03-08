@@ -13,14 +13,9 @@ import java.util.List;
  * @since 2017-02-23
  */
 
-public class WaterReport {
+public class WaterReport extends AbstractReport{
     private static int idNum = 0;
 
-    private Date createdDate;
-    private int reportNum;
-    private String author;
-    private Double longitude;
-    private Double latitude;
     private WaterType type;
     private WaterCondition condition;
 
@@ -40,11 +35,7 @@ public class WaterReport {
      * @param idNum - The ID number of the report
      */
     public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition, Date date, int idNum) {
-        createdDate = date;
-        reportNum = idNum;
-        this.author = author;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        super(author, longitude, latitude, date, idNum);
         this.type = type;
         this.condition = condition;
     }
@@ -59,62 +50,10 @@ public class WaterReport {
      * @param condition - Condition of the water (potable, waste, etc...)
      */
     public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition) {
-        createdDate = new Date();
-        reportNum = idNum;
+        super(author, longitude, latitude, new Date(), idNum);
         idNum++;
-        this.author = author;
-        this.longitude = longitude;
-        this.latitude = latitude;
         this.type = type;
         this.condition = condition;
-    }
-
-    /**
-     * Getter for the createdDate.
-     * @return - the createdDate
-     */
-    public Date getDate(){
-        return createdDate;
-    }
-
-    /**
-     * Getter for the report number.
-     * @return - the report number
-     */
-    public int getReportNum() {
-        return reportNum;
-    }
-
-    /**
-     * Getter for the report's author.
-     * @return - the name of the user who submitted the report
-     */
-    public String getAuthor() {
-        return author;
-    }
-
-    /**
-     * Getter for the longitude.
-     * @return - longitude of the report.
-     */
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    /**
-     * Getter for the latitude.
-     * @return - latitude of the report
-     */
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    /**
-     * Getter for the WaterType of the report.
-     * @return - the water type as specified in the report
-     */
-    public WaterType getType() {
-        return type;
     }
 
     /**
