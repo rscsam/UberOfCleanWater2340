@@ -57,6 +57,14 @@ public class WaterReport extends AbstractReport{
     }
 
     /**
+     * Getter for the WaterType of the report.
+     * @return - the water type as specified in the report.
+     */
+    public WaterType getType() {
+        return type;
+    }
+
+    /**
      * Getter for the WaterCondition of the report.
      * @return - the water condition as specified in the report.
      */
