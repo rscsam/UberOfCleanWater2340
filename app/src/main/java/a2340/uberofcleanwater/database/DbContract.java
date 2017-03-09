@@ -47,4 +47,22 @@ public final class DbContract {
         public static final String COLUMN_NAME_CONDITION = "condition";
     }
 
+    /**
+     * Inner class which defines the contents of table "purityReports"
+     *
+     * @author Ryan Anderson
+     * @version 1.0
+     * @since 2017-03-09
+     */
+    public static class PurityEntry implements android.provider.BaseColumns {
+        public static final String TABLE_NAME = "purityReports";
+        public static final String COLUMN_NAME_AUTHOR = "author";
+        public static final String COLUMN_NAME_LONG = "longitude";
+        public static final String COLUMN_NAME_LAT = "latitude";
+        public static final String COLUMN_NAME_CONDITION = "condition";
+        public static final String COLUMN_NAME_CONTAMINANT = "contaminantPPM";
+        public static final String COLUMN_NAME_VIRUS = "virusPPM";
+        public static final String COLUMN_NAME_DATE = "date";
+    }
+
 }

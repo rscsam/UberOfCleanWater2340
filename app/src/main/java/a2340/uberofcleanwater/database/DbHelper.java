@@ -42,7 +42,21 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbContract.WaterReportEntry.COLUMN_NAME_CONDITION + " INTEGER)";
 
     private static final String SQL_DELETE_ENTRIES_WATERREPORTS =
-            "DROP TABLE IF EXISTS " + DbContract.UserEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + DbContract.WaterReportEntry.TABLE_NAME;
+
+    private static final String SQL_CREATE_ENTRIES_PURITYREPORTS =
+            "CREATE TABLE " + DbContract.PurityEntry.TABLE_NAME + " (" +
+                    DbContract.PurityEntry._ID + " INTEGER PRIMARY KEY," +
+                    DbContract.PurityEntry.COLUMN_NAME_DATE + " TEXT," +
+                    DbContract.PurityEntry.COLUMN_NAME_AUTHOR + " TEXT," +
+                    DbContract.PurityEntry.COLUMN_NAME_LONG + " REAL," +
+                    DbContract.PurityEntry.COLUMN_NAME_LAT + " REAL," +
+                    DbContract.PurityEntry.COLUMN_NAME_CONTAMINANT + " TEXT," +
+                    DbContract.PurityEntry.COLUMN_NAME_VIRUS + " TEXT," +
+                    DbContract.PurityEntry.COLUMN_NAME_CONDITION + " INTEGER)";
+
+    private static final String SQL_DELETE_ENTRIES_PURITYREPORTS =
+            "DROP TABLE IF EXISTS " + DbContract.PurityEntry.TABLE_NAME;
 
     /**
      * Constructor for the Database helper
@@ -59,6 +73,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES_USER);
         db.execSQL(SQL_CREATE_ENTRIES_WATERREPORTS);
+        db.execSQL(SQL_CREATE_ENTRIES_PURITYREPORTS);
     }
 
     /**
@@ -70,6 +85,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES_USER);
         db.execSQL(SQL_DELETE_ENTRIES_WATERREPORTS);
+        db.execSQL(SQL_DELETE_ENTRIES_PURITYREPORTS);
         onCreate(db);
     }
 }

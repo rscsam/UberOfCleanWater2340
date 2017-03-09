@@ -13,6 +13,7 @@ import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.PurityCondition;
 import a2340.uberofcleanwater.model.PurityReport;
+import a2340.uberofcleanwater.model.PurityReportList;
 
 /**
  * Activity class to handle input from the Submit Purity Report Screen.
@@ -99,16 +100,17 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
             if (success) Toast.makeText(this, "Longitude is not a number", Toast.LENGTH_LONG).show();
             success = false;
         }
-        if (latitude < 0 || latitude > 90) {
-            if (success) Toast.makeText(this, "Latitude is not in the range 0 to 90", Toast.LENGTH_LONG).show();
+        if (latitude < -90 || latitude > 90) {
+            if (success) Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
             success = false;
         }
-        else if (longitude < 0 || longitude > 180) {
-            if (success) Toast.makeText(this, "Longitude is not in the range 0 to 180", Toast.LENGTH_LONG).show();
+        else if (longitude < -180 || longitude > 180) {
+            if (success) Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
             success = false;
         } else {
             PurityReport purityReport = new PurityReport(nameString, longitude, latitude, PurityCondition.valueOf(condition), contaminant, virus);
-            Toast.makeText(this, "Purity Report list not yet implemented", Toast.LENGTH_LONG).show();
+            PurityReportList.addReport(db, purityReport);
+            Toast.makeText(this, "Purity Report successfully submitted", Toast.LENGTH_LONG).show();
             finish();
         }
     }

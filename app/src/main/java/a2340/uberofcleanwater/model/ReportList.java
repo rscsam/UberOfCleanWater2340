@@ -26,7 +26,7 @@ import a2340.uberofcleanwater.database.DbContract;
 public class ReportList {
 
     /**
-     * adds a report to the list
+     * adds a report to the database
      * @param newReport the report to add
      */
     public static void addReport(SQLiteDatabase db, WaterReport newReport) {
