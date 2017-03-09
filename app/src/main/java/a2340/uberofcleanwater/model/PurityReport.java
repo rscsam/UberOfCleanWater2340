@@ -1,6 +1,8 @@
 package a2340.uberofcleanwater.model;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Arrays;
 
 /**
  * Class representing a purity report submitted by a Worker.
@@ -14,6 +16,8 @@ public class PurityReport extends AbstractReport {
     private PurityCondition condition;
     private int contaminantPPM;
     private int virusPPM;
+
+    public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
 
     /**
      * Full Constructor with all related parameters.

@@ -48,4 +48,9 @@
     <string name="view_current_reports">View Current Reports</string>
     <string name="title_activity_maps">Map</string>
     <string name="view_map">View Map</string>
+    <string name="submit_purity_report">Submit Purity Report</string>
+    <string name="purity_condition">Purity Condition</string>
+    <string name="contaminantppm">ContaminantPPM</string>
+    <string name="virusppm">VirusPPM</string>
+    <string name="view_purity_reports">View Purity Reports</string>
 </resources>

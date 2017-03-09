@@ -39,24 +39,48 @@
         android:clickable="true"
         android:textColor="@android:color/holo_blue_bright" />
 
-    <Button
-        android:text="@string/submit_water_report"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_profile_bttn"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:onClick="submitReportOnClick"
-        android:id="@+id/submit_bttnn" />
+        android:id="@+id/submit_ll">
+        <Button
+            android:text="@string/submit_water_report"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="submitReportOnClick"
+            android:layout_weight="0.5"
+            android:id="@+id/submit_bttnn" />
+        <Button
+            android:text="@string/submit_purity_report"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="submitPurityReportOnClick"
+            android:layout_weight="0.5"
+            android:id="@+id/submit_purity_bttn"/>
+    </LinearLayout>
 
-    <Button
-        android:text="@string/view_current_reports"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/submit_bttnn"
-        android:layout_centerHorizontal="true"
-        android:onClick="viewReportsOnclick"
-        android:id="@+id/viewreports_bttn"/>
+        android:layout_below="@+id/submit_ll"
+        android:id="@+id/view_lists_ll">
+        <Button
+            android:text="@string/view_current_reports"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:onClick="viewReportsOnclick"
+            android:id="@+id/viewreports_bttn"/>
+        <Button
+            android:text="@string/view_purity_reports"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:onClick="viewPurityReportsOnClick"
+            android:id="@+id/view_purity_reports_bttn"/>
+    </LinearLayout>
 
     <Button
         android:text="@string/view_map"

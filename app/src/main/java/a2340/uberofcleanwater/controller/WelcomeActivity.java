@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,24 @@ public class WelcomeActivity extends AppCompatActivity {
         final TextView welcomeTV = (TextView) findViewById(R.id.welcome_tv);
         welcomeTV.setText("Welcome to the Uber of Clean Water " + currentUser.getUserName() + "!");
         checkProfile();
+
+        checkUserClearance();
+    }
+
+    /**
+     * Checks the authority level of the user and changes the display as appropriate.
+     */
+    private void checkUserClearance() {
+        AccountType clearance = currentUser.getType();
+        View submitPurity = findViewById(R.id.submit_purity_bttn);
+        View viewPurity = findViewById(R.id.view_purity_reports_bttn);
+        if (clearance == AccountType.User) {
+            submitPurity.setVisibility(View.GONE);
+            viewPurity.setVisibility(View.GONE);
+        } else {
+            submitPurity.setVisibility(View.VISIBLE);
+            viewPurity.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -119,5 +138,42 @@ public class WelcomeActivity extends AppCompatActivity {
     public void viewReportsOnclick(View view) {
         Intent viewReports = new Intent(this, ViewReportsActivity.class);
         startActivity(viewReports);
+    }
+
+    /**
+     * Launches the ViewPurityReportsActivity.
+     * Denies the user if they don't have proper authorization though this is a redundant
+     * countermeasure as they shouldn't be able to see the button in the first place.
+     * @param view the View Purity Reports button
+     */
+    public void submitPurityReportOnClick(View view) {
+        if (currentUser.getType() == AccountType.User) {
+            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
+        } else {
+            Intent submitPurity = new Intent(this, SubmitPurityReportActivity.class);
+            startActivity(submitPurity);
+        }
+    }
+
+    /**
+     * Launches the ViewPurityReportsActivity.
+     * Denies the user if they don't have proper authorization though this is a redundant
+     * countermeasure as they shouldn't be able to see the button in the first place.
+     * @param view the View Purity Reports button
+     */
+    public void viewPurityReportsOnClick(View view) {
+        /*
+        String display = (currentUser.getType().toString());
+        String display2 = (currentUser.getUserName().toString());
+        Toast.makeText(this, display, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, display2, Toast.LENGTH_LONG).show();
+        */
+        if (currentUser.getType() == AccountType.User) {
+            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "To be implemented", Toast.LENGTH_LONG).show();
+            //Intent viewPurity = new Intent(this, ViewPurityReportsActivity.class);
+            //startActivity(viewPurity);
+        }
     }
 }
