@@ -11,8 +11,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
+import a2340.uberofcleanwater.model.ReportList;
+import a2340.uberofcleanwater.model.WaterReport;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -34,22 +38,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
+     * Adds markers to the map where water reports are located. The snippet for each report displays
+     * the report number and water type.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        ArrayList<WaterReport> reports = ReportList.getReportList(db);
+        for (WaterReport r : reports) {
+            LatLng loc = new LatLng(r.getLatitude(), r.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())).snippet(r.getType().toString()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        }
     }
 
     @Override
