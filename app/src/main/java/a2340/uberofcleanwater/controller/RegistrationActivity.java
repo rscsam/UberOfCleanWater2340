@@ -43,7 +43,9 @@ public class RegistrationActivity extends AppCompatActivity {
         final EditText usernameET = (EditText) findViewById(R.id.username_et);
         final EditText passwordET = (EditText) findViewById(R.id.password_et);
         final RadioGroup rg = (RadioGroup) findViewById(R.id.account_type_rg);
-        int selection = rg.getCheckedRadioButtonId();
+        int button = rg.getCheckedRadioButtonId();
+        View rgView = rg.findViewById(button);
+        int selection = rg.indexOfChild(rgView);
         AccountType accountType;
         if (selection == 0)
             accountType = AccountType.User;
