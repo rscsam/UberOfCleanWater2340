@@ -18,6 +18,8 @@ public class PurityReport extends AbstractReport {
     private int virusPPM;
 
     public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
+    public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
+    public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
     /**
      * Full Constructor with all related parameters.

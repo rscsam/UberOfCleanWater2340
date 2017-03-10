@@ -3,11 +3,14 @@ package a2340.uberofcleanwater.controller;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.List;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
@@ -34,10 +37,20 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
 
         Spinner conditionSpinner = (Spinner) findViewById(R.id.purity_condition_spinner);
+        Spinner latitudeSpinner = (Spinner) findViewById(R.id.lat_spinner);
+        Spinner longitudeSpinner = (Spinner) findViewById(R.id.longitude_spinner);
 
         ArrayAdapter<String> conditionAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, PurityReport.legalConditions);
         conditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         conditionSpinner.setAdapter(conditionAdapter);
+
+        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, PurityReport.latitudeHemispheres);
+        latitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        latitudeSpinner.setAdapter(latitudeAdapter);
+
+        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, PurityReport.longitudeHemispheres);
+        longitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        longitudeSpinner.setAdapter(longitudeAdapter);
 
         DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
@@ -54,59 +67,64 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         final EditText virusET = (EditText) findViewById(R.id.virusppm_et);
         final EditText latitudeET = (EditText) findViewById(R.id.latitude_et);
         final EditText longitudeET = (EditText) findViewById(R.id.longitude_et);
+        final Spinner latitudeSpinner = (Spinner) findViewById(R.id.lat_spinner);
+        final Spinner longitudeSpinner = (Spinner) findViewById(R.id.longitude_spinner);
 
 
        String condition = conditionSpinner.getSelectedItem().toString();
-        int contaminant = -1;
-        int virus = -1;
-        double latitude = -1;
-        double longitude = -1;
-        boolean success = true;
+        int contaminant;
+        int virus;
+        double latitude;
+        double longitude;
 
         if (contaminantET.getText().toString().isEmpty()) {
             Toast.makeText(this, "ContaminantPPM is required.", Toast.LENGTH_LONG).show();
-            success = false;
+            return;
         } else if (virusET.getText().toString().isEmpty()) {
             Toast.makeText(this, "VirusPPM is required.", Toast.LENGTH_LONG).show();
-            success = false;
+            return;
         } else if (latitudeET.getText().toString().isEmpty()) {
             Toast.makeText(this, "Latitude is required.", Toast.LENGTH_LONG).show();
-            success = false;
+            return;
         } else if (longitudeET.getText().toString().isEmpty()) {
             Toast.makeText(this, "Longitude is required.", Toast.LENGTH_LONG).show();
-            success = false;
+            return;
         }
          try {
             contaminant = Integer.parseInt(contaminantET.getText().toString());
         } catch (NumberFormatException e) {
-            if (success) Toast.makeText(this, "ContaminantPPM is not an integer", Toast.LENGTH_LONG).show();
-            success = false;
+            Toast.makeText(this, "ContaminantPPM is not an integer", Toast.LENGTH_LONG).show();
+            return;
         }
         try {
             virus = Integer.parseInt(virusET.getText().toString());
         } catch (NumberFormatException e) {
-            if (success) Toast.makeText(this, "VirusPPM is not an integer", Toast.LENGTH_LONG).show();
-            success = false;
+            Toast.makeText(this, "VirusPPM is not an integer", Toast.LENGTH_LONG).show();
+            return;
         }
-         try {
+        try {
             latitude = Double.parseDouble(latitudeET.getText().toString());
+            if (latitudeSpinner.getSelectedItem().toString().equals(PurityReport.latitudeHemispheres.get(1))) {
+                latitude *= -1;
+            }
         } catch (NumberFormatException e) {
-            if (success) Toast.makeText(this, "Latitude is not a number", Toast.LENGTH_LONG).show();
-             success = false;
+            Toast.makeText(this, "Latitude is not a number", Toast.LENGTH_LONG).show();
+            return;
         }
         try {
             longitude = Double.parseDouble(longitudeET.getText().toString());
+            if (longitudeSpinner.getSelectedItem().toString().equals(PurityReport.longitudeHemispheres.get(0))) {
+                longitude *= -1;
+            }
         } catch (NumberFormatException e) {
-            if (success) Toast.makeText(this, "Longitude is not a number", Toast.LENGTH_LONG).show();
-            success = false;
+            Toast.makeText(this, "Longitude is not a number", Toast.LENGTH_LONG).show();
+            return;
         }
         if (latitude < -90 || latitude > 90) {
-            if (success) Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
-            success = false;
+            Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
         }
         else if (longitude < -180 || longitude > 180) {
-            if (success) Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
-            success = false;
+            Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
         } else {
             PurityReport purityReport = new PurityReport(nameString, longitude, latitude, PurityCondition.valueOf(condition), contaminant, virus);
             PurityReportList.addReport(db, purityReport);

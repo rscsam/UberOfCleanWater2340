@@ -90,36 +90,64 @@
         android:layout_below="@+id/ppm_entry_ll"
         android:layout_marginTop="33dp"
         android:id="@+id/latitude_tv"/>
-
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/latitude_tv"
-        android:maxLines="1"
-        android:lines="1"
-        android:inputType="numberDecimal"
-        android:id="@+id/latitude_et"/>
+        android:orientation="horizontal"
+        android:id="@+id/latitude_ll">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="numberDecimal"
+            android:layout_weight="0.7"
+            android:id="@+id/latitude_et"/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_gravity="bottom"
+            android:id="@+id/lat_spinner"/>
+   </LinearLayout>
 
     <TextView
         android:text="@string/longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/latitude_et"
+        android:layout_below="@+id/latitude_ll"
         android:layout_marginTop="12dp"
         android:id="@+id/longitude_tv"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/longitude_tv"
-        android:maxLines="1"
-        android:inputType="numberDecimal"
-        android:id="@+id/longitude_et"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/longitude_et"
+        android:layout_below="@+id/longitude_tv"
+        android:id="@+id/longitude_ll">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:id="@+id/longitude_et"/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_gravity="bottom"
+            android:id="@+id/longitude_spinner"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/longitude_ll"
         android:layout_marginTop="26dp"
         android:orientation="horizontal"
         android:id="@+id/button_ll">
