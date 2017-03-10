@@ -151,6 +151,7 @@ public class WelcomeActivity extends AppCompatActivity {
             Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
         } else {
             Intent submitPurity = new Intent(this, SubmitPurityReportActivity.class);
+            submitPurity.putExtra("username", currentUser.getUserName());
             startActivity(submitPurity);
         }
     }
