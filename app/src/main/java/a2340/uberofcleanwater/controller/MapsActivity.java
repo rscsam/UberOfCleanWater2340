@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import a2340.uberofcleanwater.R;
+import a2340.uberofcleanwater.controller.adapter.MapMarkerAdapter;
 import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
@@ -38,19 +39,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     /**
-     * Adds markers to the map where water reports are located. The snippet for each report displays
-     * the report number and water type.
+     * Adds markers to the map where water reports are located. When markers clicked, can see info
+     * about the report.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         ArrayList<WaterReport> reports = ReportList.getReportList(db);
         for (WaterReport r : reports) {
             LatLng loc = new LatLng(r.getLatitude(), r.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())).snippet(r.getType().toString()));
+            //pass all info to be displayed in title field of marker
+            mMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())
+                    + "_" + r.getType().toString() + "_" + r.getCondition().toString() + "_" + r.getAuthor()
+                    + "_" + Double.toString(r.getLatitude()) + "_" + Double.toString(r.getLongitude())));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
+        mMap.setInfoWindowAdapter(new MapMarkerAdapter(getLayoutInflater()));
     }
 
     @Override
