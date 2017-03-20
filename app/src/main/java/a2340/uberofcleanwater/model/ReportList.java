@@ -32,12 +32,20 @@ public class ReportList {
     public static void addReport(SQLiteDatabase db, WaterReport newReport) {
         ContentValues values = new ContentValues();
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR, newReport.getAuthor());
-        values.put(DbContract.WaterReportEntry.COLUMN_NAME_NUM, newReport.getReportNum());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_DATE, newReport.getDate().toString());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_LAT, newReport.getLatitude());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_LONG, newReport.getLongitude());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION, newReport.getCondition().ordinal());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_TYPE, newReport.getType().ordinal());
+
+        Cursor c = db.query(DbContract.WaterReportEntry.TABLE_NAME, null, "_id = (SELECT MAX(_id) FROM " + DbContract.WaterReportEntry.TABLE_NAME + ")", null, null, null, null);
+
+        if(c.moveToFirst()) {
+            values.put(DbContract.WaterReportEntry._ID, c.getInt(c.getColumnIndex(DbContract.WaterReportEntry._ID)) + 1);
+        } else {
+            values.put(DbContract.WaterReportEntry._ID, 1);
+        }
+        c.close();
 
         db.insert(DbContract.WaterReportEntry.TABLE_NAME, null, values);
     }
@@ -53,7 +61,7 @@ public class ReportList {
 
         String[] projection = {
                 DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR,
-                DbContract.WaterReportEntry.COLUMN_NAME_NUM,
+                DbContract.WaterReportEntry._ID,
                 DbContract.WaterReportEntry.COLUMN_NAME_DATE,
                 DbContract.WaterReportEntry.COLUMN_NAME_LAT,
                 DbContract.WaterReportEntry.COLUMN_NAME_LONG,
@@ -73,7 +81,7 @@ public class ReportList {
 
         while(c.moveToNext()) {
             String author = c.getString(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR));
-            int num = c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_NUM));
+            int num = c.getInt(c.getColumnIndex(DbContract.WaterReportEntry._ID));
             double latitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LAT));
             double longitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LONG));
             WaterCondition condition = WaterCondition.values()[c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION))];

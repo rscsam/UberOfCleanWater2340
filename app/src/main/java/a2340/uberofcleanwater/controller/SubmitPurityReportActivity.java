@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import a2340.uberofcleanwater.Manifest;
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.PurityCondition;

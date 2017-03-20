@@ -39,7 +39,6 @@ public final class DbContract {
     public static class WaterReportEntry implements android.provider.BaseColumns {
         public static final String TABLE_NAME = "waterReports";
         public static final String COLUMN_NAME_DATE = "date";
-        public static final String COLUMN_NAME_NUM = "reportNum";
         public static final String COLUMN_NAME_AUTHOR = "author";
         public static final String COLUMN_NAME_LONG = "longitude";
         public static final String COLUMN_NAME_LAT = "latitude";

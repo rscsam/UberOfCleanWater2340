@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Database.db";
 
     private static final String SQL_CREATE_ENTRIES_USER =
@@ -34,7 +34,6 @@ public class DbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + DbContract.WaterReportEntry.TABLE_NAME + " (" +
                     DbContract.WaterReportEntry._ID + " INTEGER PRIMARY KEY," +
                     DbContract.WaterReportEntry.COLUMN_NAME_DATE + " TEXT," +
-                    DbContract.WaterReportEntry.COLUMN_NAME_NUM + " INTEGER," +
                     DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR + " TEXT," +
                     DbContract.WaterReportEntry.COLUMN_NAME_LONG + " REAL," +
                     DbContract.WaterReportEntry.COLUMN_NAME_LAT + " REAL," +
