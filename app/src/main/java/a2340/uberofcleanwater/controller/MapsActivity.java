@@ -41,6 +41,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /**
      * Adds markers to the map where water reports are located. When markers clicked, can see info
      * about the report.
+     *
+     * @param googleMap the google map being used
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {

@@ -23,6 +23,7 @@ public class PurityReportList {
 
     /**
      * adds a report to the database
+     * @param db the database being accessed
      * @param newReport the report to add
      */
     public static void addReport(SQLiteDatabase db, PurityReport newReport) {
