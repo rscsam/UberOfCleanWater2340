@@ -15,11 +15,14 @@ import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
 
+/**
+ * Activity which displays water reports
+ *
+ * @author Sam Costley
+ * @version 1.0
+ * @since 2017-02-20
+ */
 public class ViewReportsActivity extends AppCompatActivity {
-
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
-    private RecyclerView.Adapter mAdapter;
 
     private SQLiteDatabase db;
 
@@ -33,11 +36,11 @@ public class ViewReportsActivity extends AppCompatActivity {
 
         ArrayList<WaterReport> reports = ReportList.getReportList(db);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.report_recycler_view);
-        mLinearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.report_recycler_view);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new WaterReportAdapter(reports);
+        RecyclerView.Adapter mAdapter = new WaterReportAdapter(reports);
         mRecyclerView.setAdapter(mAdapter);
     }
 

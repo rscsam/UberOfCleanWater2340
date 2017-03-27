@@ -13,13 +13,13 @@ import java.util.Arrays;
 public class PurityReport extends AbstractReport {
     private static int idNum = 0;
 
-    private PurityCondition condition;
-    private int contaminantPPM;
-    private int virusPPM;
+    final private PurityCondition condition;
+    final private int contaminantPPM;
+    final private int virusPPM;
 
-    public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
-    public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
-    public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
+    final public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
+    final public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
+    final public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
     /**
      * Full Constructor with all related parameters.
@@ -62,7 +62,7 @@ public class PurityReport extends AbstractReport {
      * Getter for the purity condition of the report.
      * @return - The purity condition of the report.
      */
-    PurityCondition getCondition() {
+    public PurityCondition getCondition() {
         return condition;
     }
 
@@ -70,7 +70,7 @@ public class PurityReport extends AbstractReport {
      * Getter for the contaminantPPM of the report.
      * @return - The contaminantPPM of the report.
      */
-    int getContaminantPPM() {
+    public int getContaminantPPM() {
         return contaminantPPM;
     }
 
@@ -78,7 +78,7 @@ public class PurityReport extends AbstractReport {
      * Getter for the virusPPM of the report.
      * @return - The virusPPM of the report
      */
-    int getVirusPPM() {
+    public int getVirusPPM() {
         return virusPPM;
     }
 }

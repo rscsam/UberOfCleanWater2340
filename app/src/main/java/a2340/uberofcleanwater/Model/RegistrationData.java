@@ -163,7 +163,7 @@ public class RegistrationData {
                 null                                // the sort order
         );
         String user, pass, name, email, address, title;
-        AccountType type = null;
+        AccountType type;
         if(c.moveToFirst()) {
             user = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
             pass = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_PASSWORD));

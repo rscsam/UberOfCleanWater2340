@@ -14,7 +14,11 @@ import a2340.uberofcleanwater.model.PurityReport;
 
 
 /**
- * Created by annabergstrom on 10/03/17.
+ * Adapter for recycler view displaying purity reports
+ *
+ * @author Anna Bergstrom
+ * @version 1.0
+ * @since 2017-03-17
  */
 
 public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapter.ViewHolder> {
@@ -67,15 +71,16 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         PurityReport pr = mDataset.get(position);
         holder.coordsTV.setText("(" + pr.getLatitude() + ", " + pr.getLongitude() + ")");
-        holder.dateTV.setText(pr.getDate().toString().substring(4, 10) + pr.getDate().toString().substring(23));
+        String dateText = pr.getDate().toString().substring(4, 10) + pr.getDate().toString().substring(23);
+        holder.dateTV.setText(dateText);
         holder.authorTV.setText(pr.getAuthor());
 
         String condition = pr.getCondition().toString();
         holder.conditionTV.setText(condition); //null pointer?
 
-        holder.contaminantppmTV.setText(Integer.toString(pr.getContaminantPPM()));
-        holder.virusppmTV.setText(Integer.toString(pr.getVirusPPM()));
-        holder.reportNumTV.setText("" + pr.getReportNum());
+        holder.contaminantppmTV.setText(pr.getContaminantPPM());
+        holder.virusppmTV.setText(pr.getVirusPPM());
+        holder.reportNumTV.setText(pr.getReportNum());
     }
 
     @Override

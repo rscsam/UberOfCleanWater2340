@@ -16,14 +16,16 @@ import a2340.uberofcleanwater.model.PurityReport;
 import a2340.uberofcleanwater.model.PurityReportList;
 
 /**
- * Created by annabergstrom on 10/03/17.
+ * Activity which displays purity reports
+ *
+ * @author Sam Costley
+ * @author Anna Bergstrom
+ * @version 1.0
+ * @since 2017-03-20
  */
 
 public class ViewPurityReportsActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
-    private RecyclerView.Adapter mAdapter;
     private SQLiteDatabase db;
 
     @Override
@@ -36,11 +38,11 @@ public class ViewPurityReportsActivity extends AppCompatActivity {
 
         ArrayList<PurityReport> reports = PurityReportList.getReportList(db);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.purity_report_recycler_view);
-        mLinearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.purity_report_recycler_view);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        mAdapter = new PurityReportAdapter(reports);
+        RecyclerView.Adapter mAdapter = new PurityReportAdapter(reports);
         mRecyclerView.setAdapter(mAdapter);
     }
 

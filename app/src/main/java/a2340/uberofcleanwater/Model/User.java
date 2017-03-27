@@ -4,6 +4,7 @@ package a2340.uberofcleanwater.model;
  * Class which holds information about the user
  *
  * @author Ryan Anderson
+ * @author Sam Costley
  * @version 1.0
  * @since 2017-02-12
  */
@@ -35,15 +36,6 @@ public class User {
         this.emailAddress = emailAddress;
         this.homeAddress = homeAddress;
         this.title = title;
-    }
-
-    /**
-     * Old constructor for backwards compatibility
-     * @param userName - User's login id
-     * @param password - User's login password
-     */
-    public User(String userName, String password) {
-        this("", AccountType.User, userName, password, "", "", "");
     }
 
     /**
@@ -106,7 +98,7 @@ public class User {
      * Returns the password of the user
      * @return the user's password
      */
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
 
@@ -163,20 +155,7 @@ public class User {
      * @return true if the profile is complete, false otherwise
      */
     public boolean isProfileComplete() {
-        if (name == null || emailAddress == null || title == null || homeAddress == null) {
-            return false;
-        } else {
-            return !(name.isEmpty() || emailAddress.isEmpty() || title.isEmpty() || homeAddress.isEmpty());
-        }
+        return !(name == null || emailAddress == null || title == null || homeAddress == null)
+                && !(name.isEmpty() || emailAddress.isEmpty() || title.isEmpty() || homeAddress.isEmpty());
     }
-
-    /**
-     * Checks a given password against the user's password
-     * @param password - the password passed in by the user
-     * @return true if the passwords match, false otherwise
-     */
-    boolean checkPassword(String password) {
-        return password.equals(this.password);
-    }
-
 }

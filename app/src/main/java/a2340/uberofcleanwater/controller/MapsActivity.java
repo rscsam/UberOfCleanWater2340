@@ -21,7 +21,6 @@ import a2340.uberofcleanwater.model.WaterReport;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private SQLiteDatabase db;
 
     @Override
@@ -46,17 +45,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         ArrayList<WaterReport> reports = ReportList.getReportList(db);
         for (WaterReport r : reports) {
             LatLng loc = new LatLng(r.getLatitude(), r.getLongitude());
             //pass all info to be displayed in title field of marker
-            mMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())
+            googleMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())
                     + "_" + r.getType().toString() + "_" + r.getCondition().toString() + "_" + r.getAuthor()
                     + "_" + Double.toString(r.getLatitude()) + "_" + Double.toString(r.getLongitude())));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
-        mMap.setInfoWindowAdapter(new MapMarkerAdapter(getLayoutInflater()));
+        googleMap.setInfoWindowAdapter(new MapMarkerAdapter(getLayoutInflater()));
     }
 
     @Override
