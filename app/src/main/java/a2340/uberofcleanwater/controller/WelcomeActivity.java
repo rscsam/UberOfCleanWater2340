@@ -172,9 +172,9 @@ public class WelcomeActivity extends AppCompatActivity {
         if (currentUser.getType() == AccountType.User) {
             Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "To be implemented", Toast.LENGTH_LONG).show();
-            //Intent viewPurity = new Intent(this, ViewPurityReportsActivity.class);
-            //startActivity(viewPurity);
+//            Toast.makeText(this, "To be implemented", Toast.LENGTH_LONG).show();
+            Intent viewPurity = new Intent(this, ViewPurityReportsActivity.class);
+            startActivity(viewPurity);
         }
     }
 }
