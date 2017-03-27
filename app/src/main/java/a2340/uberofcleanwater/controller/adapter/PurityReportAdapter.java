@@ -14,9 +14,12 @@ import a2340.uberofcleanwater.model.PurityReport;
 
 
 /**
- * Created by annabergstrom on 10/03/17.
+ * Adapter for the purity report
+ *
+ * @author Anna Bergstrom
+ * @version 1.0
+ * @since 2017-03-26
  */
-
 public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapter.ViewHolder> {
     private ArrayList<PurityReport> mDataset;
 

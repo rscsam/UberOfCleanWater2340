@@ -61,6 +61,8 @@ public class WelcomeActivity extends AppCompatActivity {
         if (clearance == AccountType.User) {
             submitPurity.setVisibility(View.GONE);
             viewPurity.setVisibility(View.GONE);
+        } else if (clearance == AccountType.Worker) {
+            viewPurity.setVisibility(View.GONE);
         } else {
             submitPurity.setVisibility(View.VISIBLE);
             viewPurity.setVisibility(View.VISIBLE);

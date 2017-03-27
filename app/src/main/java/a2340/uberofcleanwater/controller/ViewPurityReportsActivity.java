@@ -16,9 +16,12 @@ import a2340.uberofcleanwater.model.PurityReport;
 import a2340.uberofcleanwater.model.PurityReportList;
 
 /**
- * Created by annabergstrom on 10/03/17.
+ * Adapter for the purity report
+ *
+ * @author Anna Bergstrom
+ * @version 1.0
+ * @since 2017-03-26
  */
-
 public class ViewPurityReportsActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
