@@ -49,7 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Checks the authority level of the user and changes the display as appropriate.
+     * Checks the authority level of the user and changes the display as appropriate
      */
     private void checkUserClearance() {
         AccountType clearance = currentUser.getType();
