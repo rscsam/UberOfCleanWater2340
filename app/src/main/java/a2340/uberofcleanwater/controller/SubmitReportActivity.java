@@ -41,11 +41,11 @@ public class SubmitReportActivity extends AppCompatActivity{
         Spinner conditionSpinner = (Spinner) findViewById(R.id.water_condition_in);
         Spinner typeSpinner = (Spinner) findViewById(R.id.water_type_in);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, WaterReport.legalConditions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, WaterReport.legalConditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         conditionSpinner.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, WaterReport.legalTypes);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, WaterReport.legalTypes);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter2);
 

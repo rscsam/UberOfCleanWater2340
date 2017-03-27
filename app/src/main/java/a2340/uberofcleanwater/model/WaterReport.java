@@ -34,7 +34,7 @@ public class WaterReport extends AbstractReport{
      * @param date - The date the report was created
      * @param idNum - The ID number of the report
      */
-    public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition, Date date, int idNum) {
+    WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition, Date date, int idNum) {
         super(author, longitude, latitude, date, idNum);
         this.type = type;
         this.condition = condition;

@@ -68,7 +68,8 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         WaterReport wr = mDataset.get(position);
         holder.coordsTV.setText("(" + wr.getLatitude() + ", " + wr.getLongitude() + ")");
-        holder.dateTV.setText(wr.getDate().toString().substring(4, 10) + wr.getDate().toString().substring(23));
+        String dateText = wr.getDate().toString().substring(4, 10) + wr.getDate().toString().substring(23);
+        holder.dateTV.setText(dateText);
         holder.authorTV.setText(wr.getAuthor());
 
         String condition = wr.getCondition().toString();
@@ -79,7 +80,7 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         holder.conditionTV.setText(condition);
 
         holder.waterTypeTV.setText(wr.getType().toString());
-        holder.reportNumTV.setText("" + wr.getReportNum());
+        holder.reportNumTV.setText(wr.getReportNum());
     }
 
     @Override

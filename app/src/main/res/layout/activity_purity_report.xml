@@ -44,6 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:labelFor="@+id/contaminantppm_et"
             android:id="@+id/contaminantppm_tv"/>
 
         <TextView
@@ -52,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginStart="10dp"
+            android:labelFor="@+id/virusppm_et"
             android:id="@+id/virusppm_tv"/>
 
     </LinearLayout>
@@ -89,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ppm_entry_ll"
         android:layout_marginTop="33dp"
+        android:labelFor="@+id/latitude_et"
         android:id="@+id/latitude_tv"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -120,6 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/latitude_ll"
         android:layout_marginTop="12dp"
+        android:labelFor="@+id/longitude_et"
         android:id="@+id/longitude_tv"/>
 
     <LinearLayout

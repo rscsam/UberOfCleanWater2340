@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:inputType="text"
             android:id="@+id/name_et"/>
     </LinearLayout>
     <LinearLayout
@@ -41,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:inputType="text"
             android:id="@+id/title_et"/>
     </LinearLayout>
     <LinearLayout
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:inputType="textEmailAddress"
             android:id="@+id/email_et"/>
     </LinearLayout>
     <LinearLayout
@@ -68,13 +71,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:labelFor="@+id/name_et"
+            android:labelFor="@+id/address_et"
             android:text="@string/address"
             android:id="@+id/address_tv"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:inputType="text"
             android:id="@+id/address_et"/>
     </LinearLayout>
 

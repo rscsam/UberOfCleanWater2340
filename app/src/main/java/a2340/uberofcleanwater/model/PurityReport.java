@@ -13,13 +13,13 @@ import java.util.Arrays;
 public class PurityReport extends AbstractReport {
     private static int idNum = 0;
 
-    private PurityCondition condition;
-    private int contaminantPPM;
-    private int virusPPM;
+    final private PurityCondition condition;
+    final private int contaminantPPM;
+    final private int virusPPM;
 
-    public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
-    public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
-    public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
+    final public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
+    final public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
+    final public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
     /**
      * Full Constructor with all related parameters.
@@ -33,7 +33,7 @@ public class PurityReport extends AbstractReport {
      * @param date - The given date of the report. Not automatically generated.
      * @param id - The given reportNum of the report. Not automatically generated.
      */
-    public PurityReport(String author, Double longitude, Double latitude, PurityCondition condition, int ContaminantPPM, int VirusPPM, Date date, int id) {
+    PurityReport(String author, Double longitude, Double latitude, PurityCondition condition, int ContaminantPPM, int VirusPPM, Date date, int id) {
         super(author, longitude, latitude, date, id);
         this.condition = condition;
         this.contaminantPPM = ContaminantPPM;

@@ -53,4 +53,5 @@
     <string name="contaminantppm">ContaminantPPM</string>
     <string name="virusppm">VirusPPM</string>
     <string name="view_purity_reports">View Purity Reports</string>
+    <string name="incomplete_profile_prompt">Your profile is incomplete!  Please click below</string>
 </resources>
