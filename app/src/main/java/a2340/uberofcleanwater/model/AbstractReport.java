@@ -23,7 +23,7 @@ public abstract class AbstractReport {
      * @param latitude - Latitude entered by the user
      * @param date - The date the report was created
      */
-    public AbstractReport(String author, Double longitude, Double latitude, Date date, int reportNum) {
+    AbstractReport(String author, Double longitude, Double latitude, Date date, int reportNum) {
         this.createdDate = date;
         this.reportNum = reportNum;
         this.author = author;

@@ -5,11 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.AccountType;
@@ -80,7 +77,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void checkProfile() {
         final TextView editTV = (TextView) findViewById(R.id.edit_profile_tv);
         if (!currentUser.isProfileComplete()) {
-            editTV.setText("Your profile is incomplete!  Please click below");
+            editTV.setText(R.string.incomplete_profile_prompt);
         } else {
             editTV.setText(R.string.you_can_edit_your_profile_anytime);
         }
