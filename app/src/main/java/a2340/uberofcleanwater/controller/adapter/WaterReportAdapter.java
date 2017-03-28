@@ -80,7 +80,8 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         holder.conditionTV.setText(condition);
 
         holder.waterTypeTV.setText(wr.getType().toString());
-        holder.reportNumTV.setText(wr.getReportNum());
+        String reportNumString = "" + wr.getReportNum();
+        holder.reportNumTV.setText(reportNumString);
     }
 
     @Override
