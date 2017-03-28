@@ -78,9 +78,12 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
         String condition = pr.getCondition().toString();
         holder.conditionTV.setText(condition); //null pointer?
 
-        holder.contaminantppmTV.setText(pr.getContaminantPPM());
-        holder.virusppmTV.setText(pr.getVirusPPM());
-        holder.reportNumTV.setText(pr.getReportNum());
+        String contaminantString = "" + pr.getContaminantPPM();
+        holder.contaminantppmTV.setText(contaminantString);
+        String virusString = "" + pr.getVirusPPM();
+        holder.virusppmTV.setText(virusString);
+        String reportNumString = "" + pr.getReportNum();
+        holder.reportNumTV.setText(reportNumString);
     }
 
     @Override
