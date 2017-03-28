@@ -53,15 +53,30 @@
         android:layout_below="@+id/water_condition"
         android:layout_alignParentStart="true" />
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/_0_00"
-        android:maxEms="10"
-        android:maxLines="1"
-        android:inputType="numberDecimal|numberSigned"
-        android:id="@+id/latitude_in"
-        android:layout_centerVertical="true"/>
+        android:layout_below="@+id/latitude"
+        android:orientation="horizontal"
+        android:id="@+id/latitude_ll">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="@string/_0_00"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:id="@+id/latitude_in"/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_gravity="bottom"
+            android:id="@+id/latitude_spinner"/>
+    </LinearLayout>
 
     <TextView
         android:text="@string/water_type"
@@ -77,7 +92,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/latitude"
-        android:layout_above="@+id/latitude_in"
+        android:layout_below="@+id/water_type_in"
+        android:layout_marginTop="34dp"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -85,21 +101,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/longitude"
-        android:layout_below="@+id/latitude_in"
+        android:layout_below="@+id/latitude_ll"
         android:layout_alignParentStart="true"
         android:layout_marginTop="12dp" />
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/_0_00"
-        android:maxLines="1"
-        android:maxEms="10"
-        android:inputType="numberDecimal|numberSigned"
-        android:id="@+id/longitude_in"
-        android:layout_alignTop="@+id/longitude"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
+        android:layout_below="@+id/longitude"
+        android:orientation="horizontal"
+        android:id="@+id/longitude_ll">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="@string/_0_00"
+            android:maxLines="1"
+            android:maxEms="10"
+            android:inputType="numberDecimal"
+            android:id="@+id/longitude_in"/>
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_gravity="bottom"
+            android:id="@+id/longitude_spinner"/>
+    </LinearLayout>
 
     <Spinner
         android:layout_width="match_parent"

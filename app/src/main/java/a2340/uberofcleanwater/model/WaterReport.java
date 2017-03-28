@@ -21,6 +21,8 @@ public class WaterReport extends AbstractReport{
 
     public static List<String> legalTypes = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
     public static List<String> legalConditions = Arrays.asList("Waste", "Treatable/Clear", "Treatable/Muddy", "Potable");
+    public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
+    public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
     /**
      * Constructor with necessary parameters

@@ -40,6 +40,8 @@ public class SubmitReportActivity extends AppCompatActivity{
 
         Spinner conditionSpinner = (Spinner) findViewById(R.id.water_condition_in);
         Spinner typeSpinner = (Spinner) findViewById(R.id.water_type_in);
+        Spinner latitudeSpinner = (Spinner) findViewById(R.id.latitude_spinner);
+        Spinner longitudeSpinner = (Spinner) findViewById(R.id.longitude_spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, WaterReport.legalConditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -48,6 +50,14 @@ public class SubmitReportActivity extends AppCompatActivity{
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, WaterReport.legalTypes);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter2);
+
+        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterReport.latitudeHemispheres);
+        latitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        latitudeSpinner.setAdapter(latitudeAdapter);
+
+        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterReport.longitudeHemispheres);
+        longitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        longitudeSpinner.setAdapter(longitudeAdapter);
 
         DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
@@ -66,7 +76,8 @@ public class SubmitReportActivity extends AppCompatActivity{
         final String longitudeET = ((EditText) findViewById(R.id.longitude_in)).getText().toString();
         final String waterTypeET = (String) ((Spinner) findViewById(R.id.water_type_in)).getSelectedItem();
         final String waterConditionET = (String) ((Spinner) findViewById(R.id.water_condition_in)).getSelectedItem();
-
+        final String latHemisphere = (String) ((Spinner) findViewById(R.id.latitude_spinner)).getSelectedItem();
+        final String longHemisphere = (String) ((Spinner) findViewById(R.id.longitude_spinner)).getSelectedItem();
 
         if (latitudeET.isEmpty() || longitudeET.isEmpty()) {
             Toast.makeText(this, "Latitude or Longitude is blank", Toast.LENGTH_LONG).show();
@@ -75,10 +86,16 @@ public class SubmitReportActivity extends AppCompatActivity{
                 Double lat = Double.parseDouble(latitudeET);
                 Double longitude = Double.parseDouble(longitudeET);
 
-                if ((lat < -90) || (lat > 90) || (longitude < -180) || (longitude > 180)) {
+                if ((lat < 0) || (lat > 90) || (longitude < 0) || (longitude > 180)) {
                     Toast.makeText(this, "Longitude or Latitude is an invalid number", Toast.LENGTH_LONG).show();
                 } else {
-                    WaterReport waterReport = new WaterReport(nameET, Double.parseDouble(longitudeET), Double.parseDouble(latitudeET), WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
+                    if (latHemisphere.equals("South")) {
+                        lat *= -1;
+                    }
+                    if (longHemisphere.equals("West")) {
+                        longitude *= -1;
+                    }
+                    WaterReport waterReport = new WaterReport(nameET, longitude, lat, WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));
                     ReportList.addReport(db, waterReport);
                     Toast.makeText(this, "Submission Successful", Toast.LENGTH_LONG).show();
                     finish();
