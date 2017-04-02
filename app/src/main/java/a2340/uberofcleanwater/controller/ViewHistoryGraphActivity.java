@@ -63,7 +63,7 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
      *
      * @param v  The Update Button
      */
-    public void updateGraph(View v) {
+    public void updateGraph(View view) {
         final RadioGroup typeRG = (RadioGroup) findViewById(R.id.ppm_type_rg);
         int button = typeRG.getCheckedRadioButtonId();
         View rgView = typeRG.findViewById(button);
