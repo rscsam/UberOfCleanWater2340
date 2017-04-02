@@ -22,19 +22,19 @@ import a2340.uberofcleanwater.model.PurityReport;
  */
 
 public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapter.ViewHolder> {
-    private ArrayList<PurityReport> mDataset;
+    private final ArrayList<PurityReport> mDataset;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
      */
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView coordsTV;
-        TextView dateTV;
-        TextView reportNumTV;
-        TextView authorTV;
-        TextView conditionTV;
-        TextView virusppmTV;
-        TextView contaminantppmTV;
+        final TextView coordsTV;
+        final TextView dateTV;
+        final TextView reportNumTV;
+        final TextView authorTV;
+        final TextView conditionTV;
+        final TextView virusppmTV;
+        final TextView contaminantppmTV;
 
         ViewHolder(View v) {
             super(v);
