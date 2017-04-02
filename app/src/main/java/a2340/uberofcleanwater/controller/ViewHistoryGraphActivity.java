@@ -61,7 +61,7 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
     /**
      * Onclick method for the update button that processes current input and redraws the graph
      *
-     * @param v  The Update Button
+     * @param view  The Update Button
      */
     public void updateGraph(View view) {
         final RadioGroup typeRG = (RadioGroup) findViewById(R.id.ppm_type_rg);
