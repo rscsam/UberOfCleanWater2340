@@ -41,7 +41,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     /**
      * Location listener used to update the location from the GPS.
      */
-    final LocationListener listener = new LocationListener() {
+    final private LocationListener listener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
             setLoc(location);
