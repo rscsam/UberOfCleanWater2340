@@ -21,18 +21,18 @@ import a2340.uberofcleanwater.model.WaterReport;
  */
 
 public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.ViewHolder> {
-    private ArrayList<WaterReport> mDataset;
+    private final ArrayList<WaterReport> mDataset;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
      */
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView coordsTV;
-        TextView dateTV;
-        TextView reportNumTV;
-        TextView authorTV;
-        TextView waterTypeTV;
-        TextView conditionTV;
+        final TextView coordsTV;
+        final TextView dateTV;
+        final TextView reportNumTV;
+        final TextView authorTV;
+        final TextView waterTypeTV;
+        final TextView conditionTV;
 
         ViewHolder(View v) {
             super(v);
