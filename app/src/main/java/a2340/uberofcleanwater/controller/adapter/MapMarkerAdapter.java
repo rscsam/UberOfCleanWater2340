@@ -2,6 +2,7 @@ package a2340.uberofcleanwater.controller.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +30,8 @@ public class MapMarkerAdapter implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoContents(Marker marker) {
         if (popup == null) {
-            popup = inflater.inflate(R.layout.infowindow_popup, null, false);
+            final ViewGroup nullParent = null;
+            popup = inflater.inflate(R.layout.infowindow_popup, nullParent, false);
         }
 
         final String[] infoArray = marker.getTitle().split("_");
