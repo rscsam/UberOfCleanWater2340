@@ -15,8 +15,6 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +24,15 @@ import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.PurityReport;
 import a2340.uberofcleanwater.model.PurityReportList;
 import a2340.uberofcleanwater.model.WaterReport;
+
+
+/**
+ * Activity which handles the history graph viewing and drawing
+ *
+ * @author Sam Costley
+ * @version 1.0
+ * @since 2017-04-01
+ */
 
 public class ViewHistoryGraphActivity extends AppCompatActivity {
 
@@ -51,6 +58,11 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         longitudeSpinner.setAdapter(longitudeAdapter);
     }
 
+    /**
+     * Onclick method for the update button that processes current input and redraws the graph
+     *
+     * @param v  The Update Button
+     */
     public void updateGraph(View v) {
         final RadioGroup typeRG = (RadioGroup) findViewById(R.id.ppm_type_rg);
         int button = typeRG.getCheckedRadioButtonId();
