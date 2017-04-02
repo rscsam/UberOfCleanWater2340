@@ -29,7 +29,7 @@ public class MapMarkerAdapter implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoContents(Marker marker) {
         if (popup == null) {
-            popup = inflater.inflate(R.layout.infowindow_popup, null);
+            popup = inflater.inflate(R.layout.infowindow_popup, null, false);
         }
 
         final String[] infoArray = marker.getTitle().split("_");
