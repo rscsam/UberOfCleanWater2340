@@ -54,13 +54,6 @@ public class User {
         return name;
     }
 
-    /**
-     * Sets the account type of the user
-     * @param type - User's account type
-     */
-    public void setType(AccountType type) {
-        this.type = type;
-    }
 
     /**
      * Returns the account type of the user
@@ -70,13 +63,6 @@ public class User {
         return type;
     }
 
-    /**
-     * Sets the username of the user
-     * @param userName - User's username
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     /**
      * Returns the username of the user
@@ -84,14 +70,6 @@ public class User {
      */
     public String getUserName() {
         return userName;
-    }
-
-    /**
-     * Sets the password of the user
-     * @param password - User's password
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     /**
