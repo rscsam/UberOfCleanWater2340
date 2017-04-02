@@ -64,6 +64,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            tools:ignore="labelFor"
             android:id="@+id/proximity_et"/>
         <TextView
             android:layout_width="wrap_content"
@@ -74,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/graph_latitude"
+        android:labelFor="@+id/graph_latitude_et"
         android:layout_below="@id/proximity_ll"
         android:id="@+id/graph_latitude_tv"/>
     <LinearLayout
@@ -104,6 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/graph_longitude"
+        android:labelFor="@+id/graph_longitude_et"
         android:layout_below="@id/graph_latitude_ll"
         android:id="@+id/graph_longitude_tv"/>
     <LinearLayout
