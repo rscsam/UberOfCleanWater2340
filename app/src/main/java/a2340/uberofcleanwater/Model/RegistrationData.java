@@ -198,7 +198,7 @@ public class RegistrationData {
         values.put(DbContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
 
         String[] arg = {user.getUserName()};
-        int success = db.update(DbContract.UserEntry.TABLE_NAME, values, DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
+        db.update(DbContract.UserEntry.TABLE_NAME, values, DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
 
     }
 
