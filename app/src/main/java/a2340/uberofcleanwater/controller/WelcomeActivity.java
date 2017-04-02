@@ -55,11 +55,14 @@ public class WelcomeActivity extends AppCompatActivity {
         AccountType clearance = currentUser.getType();
         View submitPurity = findViewById(R.id.submit_purity_bttn);
         View viewPurity = findViewById(R.id.view_purity_reports_bttn);
+        View viewHistory = findViewById(R.id.history_graph_bttn);
         if (clearance == AccountType.User) {
             submitPurity.setVisibility(View.GONE);
             viewPurity.setVisibility(View.GONE);
+            viewHistory.setVisibility(View.GONE);
         } else if (clearance == AccountType.Worker) {
             viewPurity.setVisibility(View.GONE);
+            viewHistory.setVisibility(View.GONE);
         } else {
             submitPurity.setVisibility(View.VISIBLE);
             viewPurity.setVisibility(View.VISIBLE);

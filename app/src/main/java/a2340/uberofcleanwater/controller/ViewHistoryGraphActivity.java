@@ -79,6 +79,12 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid Latitude or Longitude", Toast.LENGTH_LONG).show();
                 return;
             }
+            if (lat > 90 || lat < 0) {
+                Toast.makeText(this, "Invalid Latitude", Toast.LENGTH_LONG).show();
+            }
+            if (longitude > 180 || longitude < 0) {
+                Toast.makeText(this, "Invalid Longitude", Toast.LENGTH_LONG).show();
+            }
             if (proximityET.isEmpty()) {
                 proximity = 0;
             } else {
