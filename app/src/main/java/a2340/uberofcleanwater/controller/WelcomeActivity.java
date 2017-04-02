@@ -171,9 +171,24 @@ public class WelcomeActivity extends AppCompatActivity {
         if (currentUser.getType() == AccountType.User) {
             Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
         } else {
-//            Toast.makeText(this, "To be implemented", Toast.LENGTH_LONG).show();
             Intent viewPurity = new Intent(this, ViewPurityReportsActivity.class);
             startActivity(viewPurity);
+        }
+    }
+
+    /**
+     * Launches the ViewHistoryGraphActivity
+     * Denies the user if they don't have proper authorization though this is a redundant
+     * countermeasure as they shouldn't be able to see the button in the first place.
+     * @param view the View History Graph Reports button
+     */
+    public void historyGraphOnClick(View view) {
+        if (currentUser.getType() == AccountType.User) {
+            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Intent viewHistory = new Intent(this, ViewHistoryGraphActivity.class);
+            startActivity(viewHistory);
         }
     }
 }

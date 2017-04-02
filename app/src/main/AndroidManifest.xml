@@ -49,6 +49,7 @@
         <activity
             android:name=".controller.MapsActivity"
             android:label="@string/title_activity_maps" />
+        <activity android:name=".controller.ViewHistoryGraphActivity"></activity>
     </application>
 
 </manifest>

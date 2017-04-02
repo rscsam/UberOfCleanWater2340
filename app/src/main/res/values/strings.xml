@@ -54,4 +54,14 @@
     <string name="virusppm">VirusPPM</string>
     <string name="view_purity_reports">View Purity Reports</string>
     <string name="incomplete_profile_prompt">Your profile is incomplete!  Please click below</string>
+    <string name="view_history_graph">View History Graph</string>
+    <string name="virus_ppm">Virus PPM</string>
+    <string name="contaminant_ppm">Contaminant ppm</string>
+    <string name="year">Year:</string>
+    <string name="graph_latitude">Latitude</string>
+    <string name="graph_longitude">Longitude</string>
+    <string name="enter_your_graph_settings">Enter your graph settings</string>
+    <string name="within">Within</string>
+    <string name="degrees_of">degrees of</string>
+    <string name="update">Update</string>
 </resources>

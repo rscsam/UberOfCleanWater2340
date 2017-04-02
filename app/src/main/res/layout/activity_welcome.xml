@@ -91,6 +91,15 @@
         android:layout_marginTop="19dp"
         android:onClick="mapOnclick"
         android:id="@+id/viewmap_buttn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_profile_bttn"
+        android:layout_toEndOf="@id/viewmap_buttn"
+        android:text="@string/view_history_graph"
+        android:onClick="historyGraphOnClick"
+        android:id="@+id/history_graph_bttn"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
