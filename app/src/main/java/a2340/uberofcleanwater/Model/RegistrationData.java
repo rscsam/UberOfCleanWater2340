@@ -186,9 +186,8 @@ public class RegistrationData {
      * Edits a user's data
      * @param db - The database being accessed
      * @param user - The user being edited
-     * @return a boolean, true if the user was successfully edited, otherwise false
      */
-    public static boolean editUserData(SQLiteDatabase db, User user) {
+    public static void editUserData(SQLiteDatabase db, User user) {
         ContentValues values = new ContentValues();
         values.put(DbContract.UserEntry.COLUMN_NAME_USERNAME, user.getUserName());
         values.put(DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE, user.getType().ordinal());
@@ -201,16 +200,6 @@ public class RegistrationData {
         String[] arg = {user.getUserName()};
         int success = db.update(DbContract.UserEntry.TABLE_NAME, values, DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
 
-        return (success > 0);
-    }
-
-    /**
-     * Returns an instance of the class
-     *
-     * @return an instance of the RegistrationData class
-     */
-    public static RegistrationData getInstance() {
-        return new RegistrationData();
     }
 
 }
