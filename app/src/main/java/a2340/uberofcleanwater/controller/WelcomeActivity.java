@@ -79,7 +79,7 @@ public class WelcomeActivity extends AppCompatActivity {
     /**
      * checks profile for completeness and alters the text view appropriately
      */
-    public void checkProfile() {
+    private void checkProfile() {
         final TextView editTV = (TextView) findViewById(R.id.edit_profile_tv);
         if (!currentUser.isProfileComplete()) {
             editTV.setText(R.string.incomplete_profile_prompt);
