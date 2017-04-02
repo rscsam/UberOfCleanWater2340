@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,8 +24,7 @@
         android:id="@+id/cancel_button"
         android:layout_marginBottom="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="59dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="@string/submit"
@@ -34,8 +34,7 @@
         android:id="@+id/submit_button"
         android:layout_alignBaseline="@+id/cancel_button"
         android:layout_alignBottom="@+id/cancel_button"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="54dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/water_condition"
@@ -68,7 +67,8 @@
             android:maxEms="10"
             android:maxLines="1"
             android:inputType="numberDecimal"
-            android:id="@+id/latitude_in"/>
+            android:id="@+id/latitude_in"
+            tools:ignore="LabelFor" />
 
         <Spinner
             android:layout_width="0dp"
@@ -92,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/latitude"
+        android:labelFor="@id/latitude_in"
         android:layout_below="@+id/water_type_in"
         android:layout_marginTop="34dp"
         android:layout_alignParentStart="true" />
@@ -101,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/longitude"
+        android:labelFor="@id/longitude_in"
         android:layout_below="@+id/latitude_ll"
         android:layout_alignParentStart="true"
         android:layout_marginTop="12dp" />
@@ -119,7 +121,8 @@
             android:maxLines="1"
             android:maxEms="10"
             android:inputType="numberDecimal"
-            android:id="@+id/longitude_in"/>
+            android:id="@+id/longitude_in"
+            tools:ignore="LabelFor" />
 
         <Spinner
             android:layout_width="0dp"
