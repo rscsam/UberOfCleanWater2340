@@ -72,7 +72,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:onClick="viewReportsOnclick"
-            android:id="@+id/viewreports_bttn"/>
+            android:id="@+id/view_reports_bttn"/>
         <Button
             android:text="@string/view_purity_reports"
             android:layout_width="0dp"
@@ -90,12 +90,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:onClick="mapOnclick"
-        android:id="@+id/viewmap_buttn"/>
+        android:id="@+id/view_map_bttn"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_profile_bttn"
-        android:layout_toEndOf="@id/viewmap_buttn"
+        android:layout_toEndOf="@id/view_map_bttn"
         android:text="@string/view_history_graph"
         android:onClick="historyGraphOnClick"
         android:id="@+id/history_graph_bttn"

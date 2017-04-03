@@ -40,21 +40,21 @@
         android:id="@+id/ppm_ll">
 
         <TextView
-            android:text="@string/contaminantppm"
+            android:text="@string/contaminant_ppm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:labelFor="@+id/contaminantppm_et"
-            android:id="@+id/contaminantppm_tv"/>
+            android:labelFor="@+id/contaminant_ppm_et"
+            android:id="@+id/contaminant_ppm_tv"/>
 
         <TextView
-            android:text="@string/virusppm"
+            android:text="@string/virus_ppm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:layout_marginStart="10dp"
-            android:labelFor="@+id/virusppm_et"
-            android:id="@+id/virusppm_tv"/>
+            android:labelFor="@+id/virus_ppm_et"
+            android:id="@+id/virus_ppm_tv"/>
 
     </LinearLayout>
 
@@ -71,8 +71,8 @@
             android:layout_weight="0.5"
             android:maxLines="1"
             android:inputType="number"
-            android:nextFocusDown="@+id/virusppm_et"
-            android:id="@+id/contaminantppm_et"/>
+            android:nextFocusDown="@+id/virus_ppm_et"
+            android:id="@+id/contaminant_ppm_et"/>
 
         <EditText
             android:layout_width="0dp"
@@ -81,7 +81,7 @@
             android:layout_marginStart="10dp"
             android:maxLines="1"
             android:inputType="number"
-            android:id="@+id/virusppm_et"/>
+            android:id="@+id/virus_ppm_et"/>
 
     </LinearLayout>
 

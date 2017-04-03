@@ -43,15 +43,15 @@
             android:layout_marginEnd="10dp"
             android:layout_below="@id/coords_tv"
             android:layout_toEndOf="@id/author_tv"
-            android:id="@+id/virusppm_tv"/>
+            android:id="@+id/virus_ppm_tv"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_below="@id/coords_tv"
-            android:layout_toEndOf="@id/virusppm_tv"
-            android:id="@+id/contaminantppm_tv"/>
+            android:layout_toEndOf="@id/virus_ppm_tv"
+            android:id="@+id/contaminant_ppm_tv"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_below="@id/coords_tv"
-            android:layout_toEndOf="@id/contaminantppm_tv"
+            android:layout_toEndOf="@id/contaminant_ppm_tv"
             android:id="@+id/purity_condition_tv"/>
     </RelativeLayout>
 

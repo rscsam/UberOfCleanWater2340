@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * starts registration activity
-     * @param view the textview that was clicked
+     * @param view the TextView that was clicked
      */
     public void registerOnClick(View view) {
         Intent registrationActivity = new Intent(this, RegistrationActivity.class);

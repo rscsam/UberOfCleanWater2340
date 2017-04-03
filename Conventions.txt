@@ -23,8 +23,8 @@ For XML layout files
             This means do not say android:text="Submit Water Report"
             Luckily, android makes an automatic way to fix this.
                 1. Hardcode the string like I mentioned above.  A warning will appear.
-                2. Click and place the cursor over the string.  A yellow lightbulb will appear on the left.
-                3. Click on the lightbulb, and select "Extract String Resource"
+                2. Click and place the cursor over the string.  A yellow light bulb will appear on the left.
+                3. Click on the light bulb, and select "Extract String Resource"
                 4. You can use the default settings, and press okay
                 5. You're done!
             This allows you to access these strings in the Java and makes sweeping change much easier

@@ -22,7 +22,7 @@ import a2340.uberofcleanwater.model.PurityReport;
  */
 
 public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapter.ViewHolder> {
-    private final ArrayList<PurityReport> mDataset;
+    private final ArrayList<PurityReport> mDataSet;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
@@ -33,8 +33,8 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
         final TextView reportNumTV;
         final TextView authorTV;
         final TextView conditionTV;
-        final TextView virusppmTV;
-        final TextView contaminantppmTV;
+        final TextView virus_ppmTV;
+        final TextView contaminant_ppmTV;
 
         ViewHolder(View v) {
             super(v);
@@ -43,18 +43,18 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
             reportNumTV = (TextView) v.findViewById(R.id.report_num_tv);
             authorTV = (TextView) v.findViewById(R.id.author_tv);
             conditionTV = (TextView) v.findViewById(R.id.purity_condition_tv);
-            virusppmTV = (TextView) v.findViewById(R.id.virusppm_tv);
-            contaminantppmTV = (TextView) v.findViewById(R.id.contaminantppm_tv);
+            virus_ppmTV = (TextView) v.findViewById(R.id.virus_ppm_tv);
+            contaminant_ppmTV = (TextView) v.findViewById(R.id.contaminant_ppm_tv);
         }
     }
 
     /**
-     * A constructor for the adapter that initializes the dataset with given WaterReports
+     * A constructor for the adapter that initializes the data set with given WaterReports
      *
-     * @param myDataset  the waterReports being viewed
+     * @param myDataSet  the waterReports being viewed
      */
-    public PurityReportAdapter(ArrayList<PurityReport> myDataset) {
-        mDataset = myDataset;
+    public PurityReportAdapter(ArrayList<PurityReport> myDataSet) {
+        mDataSet = myDataSet;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PurityReport pr = mDataset.get(position);
+        PurityReport pr = mDataSet.get(position);
         holder.coordsTV.setText("(" + pr.getLatitude() + ", " + pr.getLongitude() + ")");
         String dateText = pr.getDate().toString().substring(4, 10) + pr.getDate().toString().substring(23);
         holder.dateTV.setText(dateText);
@@ -79,15 +79,15 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
         holder.conditionTV.setText(condition); //null pointer?
 
         String contaminantString = "" + pr.getContaminantPPM();
-        holder.contaminantppmTV.setText(contaminantString);
+        holder.contaminant_ppmTV.setText(contaminantString);
         String virusString = "" + pr.getVirusPPM();
-        holder.virusppmTV.setText(virusString);
+        holder.virus_ppmTV.setText(virusString);
         String reportNumString = "" + pr.getReportNum();
         holder.reportNumTV.setText(reportNumString);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataSet.size();
     }
 }

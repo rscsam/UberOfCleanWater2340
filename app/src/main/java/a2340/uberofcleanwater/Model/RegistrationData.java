@@ -136,7 +136,7 @@ public class RegistrationData {
     /**
      * Gets a user object from its username
      * @param username The username used to identify the user
-     * @return the userobject with username or null if user does not exist
+     * @return the User object with username or null if user does not exist
      */
     public static User getUserByUsername(SQLiteDatabase db, String username) {
         String[] projection = {

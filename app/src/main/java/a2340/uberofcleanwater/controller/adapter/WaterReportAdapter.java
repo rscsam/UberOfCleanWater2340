@@ -21,7 +21,7 @@ import a2340.uberofcleanwater.model.WaterReport;
  */
 
 public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.ViewHolder> {
-    private final ArrayList<WaterReport> mDataset;
+    private final ArrayList<WaterReport> mDataSet;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
@@ -46,12 +46,12 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
     }
 
     /**
-     * A constructor for the adapter that initializes the dataset with given WaterReports
+     * A constructor for the adapter that initializes the data set with given WaterReports
      *
-     * @param myDataset  the waterReports being viewed
+     * @param myDataSet  the waterReports being viewed
      */
-    public WaterReportAdapter(ArrayList<WaterReport> myDataset) {
-        mDataset = myDataset;
+    public WaterReportAdapter(ArrayList<WaterReport> myDataSet) {
+        mDataSet = myDataSet;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        WaterReport wr = mDataset.get(position);
+        WaterReport wr = mDataSet.get(position);
         holder.coordsTV.setText("(" + wr.getLatitude() + ", " + wr.getLongitude() + ")");
         String dateText = wr.getDate().toString().substring(4, 10) + wr.getDate().toString().substring(23);
         holder.dateTV.setText(dateText);
@@ -86,6 +86,6 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataSet.size();
     }
 }

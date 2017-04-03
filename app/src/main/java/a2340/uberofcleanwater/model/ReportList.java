@@ -53,7 +53,7 @@ public class ReportList {
     /**
      * Returns a list of water reports
      * @param db the database being accessed
-     * @return an arraylist of water reports
+     * @return an ArrayList of water reports
      */
     public static ArrayList<WaterReport> getReportList(SQLiteDatabase db) {
         ArrayList<WaterReport> list = new ArrayList<>();

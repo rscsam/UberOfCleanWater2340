@@ -142,7 +142,7 @@
         android:text="@string/update"
         android:id="@+id/update_graph_bttn"/>
     <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/history_graph_barchart"
+        android:id="@+id/history_graph_bar_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/update_graph_bttn"/>

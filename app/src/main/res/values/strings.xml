@@ -36,8 +36,6 @@
     <string name="view_map">View Map</string>
     <string name="submit_purity_report">Submit Purity Report</string>
     <string name="purity_condition">Purity Condition</string>
-    <string name="contaminantppm">ContaminantPPM</string>
-    <string name="virusppm">VirusPPM</string>
     <string name="view_purity_reports">View Purity Reports</string>
     <string name="incomplete_profile_prompt">Your profile is incomplete!  Please click below</string>
     <string name="view_history_graph">View History Graph</string>

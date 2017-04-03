@@ -132,11 +132,11 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         double maxLong = longitude + proximity;
 
         for (PurityReport r : allReports) {
-            double rlat = r.getLatitude();
-            double rlong = r.getLongitude();
+            double r_lat = r.getLatitude();
+            double r_long = r.getLongitude();
 
-            if (rlat >= minLat && rlat <= maxLat) {
-                if (rlong >= minLong && rlong <= maxLong) {
+            if (r_lat >= minLat && r_lat <= maxLat) {
+                if (r_long >= minLong && r_long <= maxLong) {
                     reports.add(r);
                 }
             }
@@ -164,7 +164,7 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
     }
 
     private void redrawGraph(double[] ppmData) {
-        BarChart chart = (BarChart) findViewById(R.id.history_graph_barchart);
+        BarChart chart = (BarChart) findViewById(R.id.history_graph_bar_chart);
 
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         List<BarEntry> entries = new ArrayList<>();

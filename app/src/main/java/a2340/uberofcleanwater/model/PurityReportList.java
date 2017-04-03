@@ -51,7 +51,7 @@ public class PurityReportList {
     /**
      * Returns a list of purity reports
      * @param db the database being accessed
-     * @return an arraylist of purity reports
+     * @return an ArrayList of purity reports
      */
     public static ArrayList<PurityReport> getReportList(SQLiteDatabase db) {
         ArrayList<PurityReport> list = new ArrayList<>();
