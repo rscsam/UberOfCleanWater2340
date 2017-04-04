@@ -10,9 +10,9 @@ package a2340.uberofcleanwater.model;
  */
 public class User {
     private String name; //User's real name
-    private AccountType type;
-    private String userName;
-    private String password;
+    private final AccountType type;
+    private final String userName;
+    private final String password;
     private String emailAddress;
     private String homeAddress;
     private String title;

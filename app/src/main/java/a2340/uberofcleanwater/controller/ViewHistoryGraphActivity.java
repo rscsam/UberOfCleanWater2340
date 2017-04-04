@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import a2340.uberofcleanwater.R;
@@ -115,14 +116,15 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 }
             }
         }
-        ArrayList<PurityReport> reports = reportsInProximity(lat, longitude, proximity);
+        ArrayList<PurityReport> reports = reportsInProximity(lat, longitude, proximity, yearET);
         if (reports.isEmpty()) {
+            Toast.makeText(this, "No purity reports in range.", Toast.LENGTH_LONG).show();
             return;
         }
         redrawGraph(condenseIntoMonthlyAverages(reports, selection));
     }
 
-    private ArrayList<PurityReport> reportsInProximity(double lat, double longitude, double proximity) {
+    private ArrayList<PurityReport> reportsInProximity(double lat, double longitude, double proximity, String year) {
         ArrayList<PurityReport> allReports = PurityReportList.getReportList(db);
         ArrayList<PurityReport> reports = new ArrayList<>();
 
@@ -134,10 +136,16 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         for (PurityReport r : allReports) {
             double r_lat = r.getLatitude();
             double r_long = r.getLongitude();
+            Date r_date = r.getDate();
+
+            int r_year = r_date.getYear() + 1900;
+            int intYear = Integer.parseInt(year);
 
             if (r_lat >= minLat && r_lat <= maxLat) {
                 if (r_long >= minLong && r_long <= maxLong) {
-                    reports.add(r);
+                    if (r_year == intYear) {
+                        reports.add(r);
+                    }
                 }
             }
         }
