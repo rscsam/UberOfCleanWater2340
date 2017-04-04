@@ -19,6 +19,14 @@ import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
 
+/**
+ * Activity which shows pins on the map
+ *
+ * @author Ryan Anderson
+ * @author Sylvia Necula
+ * @version 1.0
+ * @since 2017-02-28
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private SQLiteDatabase db;

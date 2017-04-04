@@ -65,22 +65,14 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    /**
-     * Creates the tables with their entries when the database is created
-     * @param db the database being created
-     */
+    @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES_USER);
         db.execSQL(SQL_CREATE_ENTRIES_WATERREPORTS);
         db.execSQL(SQL_CREATE_ENTRIES_PURITYREPORTS);
     }
 
-    /**
-     * On upgrade, this method deletes the old database and creates a new one
-     * @param db the database being upgraded
-     * @param oldVersion the old version number
-     * @param newVersion the new version number
-     */
+    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES_USER);
         db.execSQL(SQL_DELETE_ENTRIES_WATERREPORTS);

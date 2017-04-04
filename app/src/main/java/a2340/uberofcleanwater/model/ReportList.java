@@ -27,6 +27,7 @@ public class ReportList {
     /**
      * adds a report to the database
      * @param newReport the report to add
+     * @param db the database being accessed
      */
     public static void addReport(SQLiteDatabase db, WaterReport newReport) {
         ContentValues values = new ContentValues();
