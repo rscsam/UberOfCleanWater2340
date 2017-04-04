@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class WaterReport extends AbstractReport{
-    private static int idNum = 0;
+    private static final int idNum = 0;
 
     private final WaterType type;
     private final WaterCondition condition;
@@ -53,7 +53,6 @@ public class WaterReport extends AbstractReport{
      */
     public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition) {
         super(author, longitude, latitude, new Date(), idNum);
-        idNum++;
         this.type = type;
         this.condition = condition;
     }
@@ -81,10 +80,12 @@ public class WaterReport extends AbstractReport{
      * @return the enum representation
      */
     public static WaterCondition stringToWC(String waterCondition) {
-        if (waterCondition.equals("Treatable/Clear"))
+        if (waterCondition.equals("Treatable/Clear")) {
             waterCondition = "TreatableClear";
-        else if (waterCondition.equals("Treatable/Muddy"))
+        }
+        else if (waterCondition.equals("Treatable/Muddy")) {
             waterCondition = "TreatableMuddy";
+        }
         for (WaterCondition wc: WaterCondition.values()) {
             if (wc.toString().equals(waterCondition)) {
                 return wc;

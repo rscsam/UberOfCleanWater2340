@@ -47,14 +47,18 @@ public class RegistrationActivity extends AppCompatActivity {
         View rgView = rg.findViewById(button);
         int selection = rg.indexOfChild(rgView);
         AccountType accountType;
-        if (selection == 0)
+        if (selection == 0) {
             accountType = AccountType.User;
-        else if (selection == 1)
+        }
+        else if (selection == 1) {
             accountType = AccountType.Worker;
-        else if (selection == 2)
+        }
+        else if (selection == 2) {
             accountType = AccountType.Manager;
-        else
+        }
+        else {
             accountType = AccountType.Admin;
+        }
 
         if (RegistrationData.addUser(db, new User(null, accountType, usernameET.getText().toString(),
                 passwordET.getText().toString(), null, null, null))) {

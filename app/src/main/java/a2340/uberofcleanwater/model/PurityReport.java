@@ -11,15 +11,14 @@ import java.util.Arrays;
  * @since 2017-03-08
  */
 public class PurityReport extends AbstractReport {
-    private static int idNum = 0;
+    private static final int idNum = 0;
+    private final PurityCondition condition;
+    private final int contaminantPPM;
+    private final int virusPPM;
 
-    final private PurityCondition condition;
-    final private int contaminantPPM;
-    final private int virusPPM;
-
-    final public static List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
-    final public static List<String> latitudeHemispheres = Arrays.asList("North", "South");
-    final public static List<String> longitudeHemispheres = Arrays.asList("West", "East");
+    public static final List<String> legalConditions = Arrays.asList("Safe", "Treatable", "Unsafe");
+    public static final List<String> latitudeHemispheres = Arrays.asList("North", "South");
+    public static final List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
     /**
      * Full Constructor with all related parameters.
@@ -52,7 +51,6 @@ public class PurityReport extends AbstractReport {
      */
     public PurityReport(String author, Double longitude, Double latitude, PurityCondition condition, int ContaminantPPM, int VirusPPM) {
         super(author, longitude, latitude, new Date(), idNum);
-        idNum++;
         this.condition = condition;
         this.contaminantPPM = ContaminantPPM;
         this.virusPPM = VirusPPM;

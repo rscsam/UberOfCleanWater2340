@@ -92,10 +92,10 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid Latitude or Longitude", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (lat > 90 || lat < 0) {
+            if ((lat > 90) || (lat < 0)) {
                 Toast.makeText(this, "Invalid Latitude", Toast.LENGTH_LONG).show();
             }
-            if (longitude > 180 || longitude < 0) {
+            if ((longitude > 180) || (longitude < 0)) {
                 Toast.makeText(this, "Invalid Longitude", Toast.LENGTH_LONG).show();
             }
             if (proximityET.isEmpty()) {
@@ -141,8 +141,8 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
             int r_year = r_date.getYear() + 1900;
             int intYear = Integer.parseInt(year);
 
-            if (r_lat >= minLat && r_lat <= maxLat) {
-                if (r_long >= minLong && r_long <= maxLong) {
+            if ((r_lat >= minLat) && (r_lat <= maxLat)) {
+                if ((r_long >= minLong) && (r_long <= maxLong)) {
                     if (r_year == intYear) {
                         reports.add(r);
                     }

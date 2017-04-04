@@ -57,9 +57,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (WaterReport r : reports) {
             LatLng loc = new LatLng(r.getLatitude(), r.getLongitude());
             //pass all info to be displayed in title field of marker
-            googleMap.addMarker(new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())
-                    + "_" + r.getType().toString() + "_" + r.getCondition().toString() + "_" + r.getAuthor()
-                    + "_" + Double.toString(r.getLatitude()) + "_" + Double.toString(r.getLongitude())));
+            googleMap.addMarker(
+                    new MarkerOptions().position(loc).title(Integer.toString(r.getReportNum())
+                    + "_" + r.getType().toString() + "_" + r.getCondition().toString() + "_"
+                            + r.getAuthor() + "_" + Double.toString(r.getLatitude()) + "_"
+                            + Double.toString(r.getLongitude())));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
         googleMap.setInfoWindowAdapter(new MapMarkerAdapter(getLayoutInflater()));

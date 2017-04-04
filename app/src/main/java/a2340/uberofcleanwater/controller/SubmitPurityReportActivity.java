@@ -41,7 +41,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     /**
      * Location listener used to update the location from the GPS.
      */
-    final private LocationListener listener = new LocationListener() {
+    private final LocationListener listener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
             setLoc(location);
@@ -97,7 +97,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         if (requestCode == MY_ACCESS_FINE_LOCATION_REQUEST) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 setLatLong();
             }
         }
@@ -206,10 +206,10 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
             Toast.makeText(this, "Longitude is not a number", Toast.LENGTH_LONG).show();
             return;
         }
-        if (latitude < -90 || latitude > 90) {
+        if ((latitude < -90) || (latitude > 90)) {
             Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
         }
-        else if (longitude < -180 || longitude > 180) {
+        else if ((longitude < -180) || (longitude > 180)) {
             Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
         } else {
             PurityReport purityReport = new PurityReport(nameString, longitude, latitude, PurityCondition.valueOf(condition), contaminant, virus);

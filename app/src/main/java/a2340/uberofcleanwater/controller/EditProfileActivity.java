@@ -38,14 +38,18 @@ public class EditProfileActivity extends AppCompatActivity {
         final EditText titleET = (EditText) findViewById(R.id.title_et);
         final EditText emailET = (EditText) findViewById(R.id.email_et);
         final EditText addressET = (EditText) findViewById(R.id.address_et);
-        if (user.getName() != null)
+        if (user.getName() != null) {
             nameET.setText(user.getName());
-        if (user.getTitle() != null)
+        }
+        if (user.getTitle() != null) {
             titleET.setText(user.getTitle());
-        if (user.getEmailAddress() != null)
+        }
+        if (user.getEmailAddress() != null) {
             emailET.setText(user.getEmailAddress());
-        if (user.getHomeAddress() != null)
+        }
+        if (user.getHomeAddress() != null) {
             addressET.setText(user.getHomeAddress());
+        }
 
     }
 

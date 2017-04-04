@@ -9,11 +9,11 @@ import java.util.Date;
  * @since 2017-02-23
  */
 public abstract class AbstractReport {
-    final private Date createdDate;
-    final private int reportNum;
-    final private String author;
-    final private Double longitude;
-    final private Double latitude;
+    private final Date createdDate;
+    private final int reportNum;
+    private final String author;
+    private final Double longitude;
+    private final Double latitude;
 
     /**
      * Constructor for assigning the contained variables in an implemented subclass.

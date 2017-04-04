@@ -99,6 +99,7 @@ public class RegistrationData {
      * Checks if the given username/password combination exists in the database.
      * @param userName - Username of the user being checked for.
      * @param pass - password of the user being checked for.
+     * @param db - the database being accessed
      * @return - true if the given username/password combination exists, false if not.
      */
     public static boolean checkPassword(SQLiteDatabase db, String userName, String pass) {
@@ -129,13 +130,14 @@ public class RegistrationData {
         }
         c.close();
 
-        return (name != null && password != null);
+        return ((name != null) && (password != null));
 
     }
 
     /**
      * Gets a user object from its username
      * @param username The username used to identify the user
+     * @param db The database being accessed
      * @return the User object with username or null if user does not exist
      */
     public static User getUserByUsername(SQLiteDatabase db, String username) {
@@ -162,7 +164,12 @@ public class RegistrationData {
                 null,                               // don't filter by row groups
                 null                                // the sort order
         );
-        String user, pass, name, email, address, title;
+        String user;
+        String pass;
+        String name;
+        String email;
+        String address;
+        String title;
         AccountType type;
         if(c.moveToFirst()) {
             user = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
