@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.WaterReport;
@@ -21,7 +22,7 @@ import a2340.uberofcleanwater.model.WaterReport;
  */
 
 public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.ViewHolder> {
-    private final ArrayList<WaterReport> mDataSet;
+    private final List<WaterReport> mDataSet;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
@@ -50,7 +51,7 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
      *
      * @param myDataSet  the waterReports being viewed
      */
-    public WaterReportAdapter(ArrayList<WaterReport> myDataSet) {
+    public WaterReportAdapter(List<WaterReport> myDataSet) {
         mDataSet = myDataSet;
     }
 
@@ -73,10 +74,10 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
         holder.authorTV.setText(wr.getAuthor());
 
         String condition = wr.getCondition().toString();
-        if (condition.equals("TreatableClear")) {
+        if ("TreatableClear".equals(condition)) {
             condition = "Treatable/Clear";
         }
-        else if (condition.equals("TreatableMuddy")) {
+        else if ("TreatableMuddy".equals(condition)) {
             condition = "Treatable/Muddy";
         }
         holder.conditionTV.setText(condition);

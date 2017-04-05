@@ -32,7 +32,8 @@ public class PurityReport extends AbstractReport {
      * @param date - The given date of the report. Not automatically generated.
      * @param id - The given reportNum of the report. Not automatically generated.
      */
-    PurityReport(String author, Double longitude, Double latitude, PurityCondition condition, int ContaminantPPM, int VirusPPM, Date date, int id) {
+    PurityReport(String author, Double longitude, Double latitude, PurityCondition condition,
+                 int ContaminantPPM, int VirusPPM, Date date, int id) {
         super(author, longitude, latitude, date, id);
         this.condition = condition;
         this.contaminantPPM = ContaminantPPM;

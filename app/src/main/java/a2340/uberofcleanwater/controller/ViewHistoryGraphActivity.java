@@ -65,6 +65,9 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
      * @param view  The Update Button
      */
     public void updateGraph(View view) {
+        final int MAX_LAT = 90;
+        final int MAX_LONG = 180;
+
         final RadioGroup typeRG = (RadioGroup) findViewById(R.id.ppm_type_rg);
         int button = typeRG.getCheckedRadioButtonId();
         View rgView = typeRG.findViewById(button);
@@ -92,10 +95,10 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid Latitude or Longitude", Toast.LENGTH_LONG).show();
                 return;
             }
-            if ((lat > 90) || (lat < 0)) {
+            if ((lat > MAX_LAT) || (lat < 0)) {
                 Toast.makeText(this, "Invalid Latitude", Toast.LENGTH_LONG).show();
             }
-            if ((longitude > 180) || (longitude < 0)) {
+            if ((longitude > MAX_LONG) || (longitude < 0)) {
                 Toast.makeText(this, "Invalid Longitude", Toast.LENGTH_LONG).show();
             }
             if (proximityET.isEmpty()) {
@@ -104,10 +107,10 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 try {
                     proximity = Double.parseDouble(proximityET);
 
-                    if (latHemisphere.equals("South")) {
+                    if ("South".equals(latHemisphere)) {
                         lat *= -1;
                     }
-                    if (longHemisphere.equals("West")) {
+                    if ("West".equals(longHemisphere)) {
                         longitude *= -1;
                     }
                 } catch (NumberFormatException e) {
@@ -116,7 +119,7 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 }
             }
         }
-        ArrayList<PurityReport> reports = reportsInProximity(lat, longitude, proximity, yearET);
+        List<PurityReport> reports = reportsInProximity(lat, longitude, proximity, yearET);
         if (reports.isEmpty()) {
             Toast.makeText(this, "No purity reports in range.", Toast.LENGTH_LONG).show();
             return;
@@ -124,9 +127,9 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         redrawGraph(condenseIntoMonthlyAverages(reports, selection));
     }
 
-    private ArrayList<PurityReport> reportsInProximity(double lat, double longitude, double proximity, String year) {
-        ArrayList<PurityReport> allReports = PurityReportList.getReportList(db);
-        ArrayList<PurityReport> reports = new ArrayList<>();
+    private List<PurityReport> reportsInProximity(double lat, double longitude, double proximity, String year) {
+        Iterable<PurityReport> allReports = PurityReportList.getReportList(db);
+        List<PurityReport> reports = new ArrayList<>();
 
         double minLat = lat - proximity;
         double maxLat = lat + proximity;
@@ -152,7 +155,7 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         return reports;
     }
 
-    private double[] condenseIntoMonthlyAverages(ArrayList<PurityReport> reports, int ppmType) {
+    private double[] condenseIntoMonthlyAverages(Iterable<PurityReport> reports, int ppmType) {
         double[] condensedSums = new double[12];
         int[] numsPerMonth = new int[12];
         for (PurityReport r : reports) {

@@ -71,6 +71,9 @@ public class SubmitReportActivity extends AppCompatActivity{
      * @param view the button clicked
      */
     public void onSubmitPressed(View view) {
+        final int MAX_LAT = 90;
+        final int MAX_LONG = 180;
+
         final String nameET = username;
         final String latitudeET = ((EditText) findViewById(R.id.latitude_in)).getText().toString();
         final String longitudeET = ((EditText) findViewById(R.id.longitude_in)).getText().toString();
@@ -86,13 +89,13 @@ public class SubmitReportActivity extends AppCompatActivity{
                 Double lat = Double.parseDouble(latitudeET);
                 Double longitude = Double.parseDouble(longitudeET);
 
-                if ((lat < 0) || (lat > 90) || (longitude < 0) || (longitude > 180)) {
+                if ((lat < 0) || (lat > MAX_LAT) || (longitude < 0) || (longitude > MAX_LONG)) {
                     Toast.makeText(this, "Longitude or Latitude is an invalid number", Toast.LENGTH_LONG).show();
                 } else {
-                    if (latHemisphere.equals("South")) {
+                    if ("South".equals(latHemisphere)) {
                         lat *= -1;
                     }
-                    if (longHemisphere.equals("West")) {
+                    if ("West".equals(longHemisphere)) {
                         longitude *= -1;
                     }
                     WaterReport waterReport = new WaterReport(nameET, longitude, lat, WaterReport.stringToWT(waterTypeET), WaterReport.stringToWC(waterConditionET));

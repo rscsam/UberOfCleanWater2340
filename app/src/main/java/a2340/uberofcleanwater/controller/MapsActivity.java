@@ -53,7 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        ArrayList<WaterReport> reports = ReportList.getReportList(db);
+        Iterable<WaterReport> reports = ReportList.getReportList(db);
         for (WaterReport r : reports) {
             LatLng loc = new LatLng(r.getLatitude(), r.getLongitude());
             //pass all info to be displayed in title field of marker

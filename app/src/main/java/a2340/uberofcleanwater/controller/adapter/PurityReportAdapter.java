@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.model.PurityReport;
@@ -22,7 +23,7 @@ import a2340.uberofcleanwater.model.PurityReport;
  */
 
 public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapter.ViewHolder> {
-    private final ArrayList<PurityReport> mDataSet;
+    private final List<PurityReport> mDataSet;
 
     /**
      * A ViewHolder that encapsulates all the information contained in each RecyclerView item
@@ -53,7 +54,7 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
      *
      * @param myDataSet  the waterReports being viewed
      */
-    public PurityReportAdapter(ArrayList<PurityReport> myDataSet) {
+    public PurityReportAdapter(List<PurityReport> myDataSet) {
         mDataSet = myDataSet;
     }
 

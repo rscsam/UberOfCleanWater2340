@@ -80,10 +80,10 @@ public class WaterReport extends AbstractReport{
      * @return the enum representation
      */
     public static WaterCondition stringToWC(String waterCondition) {
-        if (waterCondition.equals("Treatable/Clear")) {
+        if ("Treatable/Clear".equals(waterCondition)) {
             waterCondition = "TreatableClear";
         }
-        else if (waterCondition.equals("Treatable/Muddy")) {
+        else if ("Treatable/Muddy".equals(waterCondition)) {
             waterCondition = "TreatableMuddy";
         }
         for (WaterCondition wc: WaterCondition.values()) {

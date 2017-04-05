@@ -162,6 +162,10 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         int virus;
         double latitude;
         double longitude;
+        final int MIN_LAT = -90;
+        final int MAX_LAT = 90;
+        final int MIN_LONG = -180;
+        final int MAX_LONG = 180;
 
         if (contaminantET.getText().toString().isEmpty()) {
             Toast.makeText(this, "ContaminantPPM is required.", Toast.LENGTH_LONG).show();
@@ -206,10 +210,10 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
             Toast.makeText(this, "Longitude is not a number", Toast.LENGTH_LONG).show();
             return;
         }
-        if ((latitude < -90) || (latitude > 90)) {
+        if ((latitude < MIN_LAT) || (latitude > MAX_LAT)) {
             Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
         }
-        else if ((longitude < -180) || (longitude > 180)) {
+        else if ((longitude < MIN_LONG) || (longitude > MAX_LONG)) {
             Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
         } else {
             PurityReport purityReport = new PurityReport(nameString, longitude, latitude, PurityCondition.valueOf(condition), contaminant, virus);
