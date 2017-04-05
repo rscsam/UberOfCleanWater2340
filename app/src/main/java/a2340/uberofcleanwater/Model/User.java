@@ -27,8 +27,8 @@ public class User {
      * @param homeAddress - User's registered home address
      * @param title - User's title (optional)
      */
-    public User(String name, AccountType type, String userName, String password, String emailAddress,
-                String homeAddress, String title) {
+    public User(String name, AccountType type, String userName, String password,
+                String emailAddress, String homeAddress, String title) {
         this.name = name;
         this.type = type;
         this.userName = userName;
@@ -133,7 +133,9 @@ public class User {
      * @return true if the profile is complete, false otherwise
      */
     public boolean isProfileComplete() {
-        return !((name == null) || (emailAddress == null) || (title == null) || (homeAddress == null))
-                && !(name.isEmpty() || emailAddress.isEmpty() || title.isEmpty() || homeAddress.isEmpty());
+        return !((name == null) || (emailAddress == null)
+                || (title == null) || (homeAddress == null))
+                && !(name.isEmpty() || emailAddress.isEmpty()
+                || title.isEmpty() || homeAddress.isEmpty());
     }
 }
