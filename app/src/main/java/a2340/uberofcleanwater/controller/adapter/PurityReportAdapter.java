@@ -72,7 +72,8 @@ public class PurityReportAdapter extends RecyclerView.Adapter<PurityReportAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         PurityReport pr = mDataSet.get(position);
         holder.coordsTV.setText("(" + pr.getLatitude() + ", " + pr.getLongitude() + ")");
-        String dateText = pr.getDate().toString().substring(4, 10) + pr.getDate().toString().substring(23);
+        String dateText = pr.getDate().toString().substring(4, 10) +
+                pr.getDate().toString().substring(23);
         holder.dateTV.setText(dateText);
         holder.authorTV.setText(pr.getAuthor());
 

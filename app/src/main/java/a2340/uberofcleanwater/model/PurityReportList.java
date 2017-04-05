@@ -29,17 +29,20 @@ public class PurityReportList {
     public static void addReport(SQLiteDatabase db, PurityReport newReport) {
         ContentValues values = new ContentValues();
         values.put(DbContract.PurityEntry.COLUMN_NAME_AUTHOR, newReport.getAuthor());
-        values.put(DbContract.PurityEntry.COLUMN_NAME_CONDITION , newReport.getCondition().ordinal());
+        values.put(DbContract.PurityEntry.COLUMN_NAME_CONDITION ,
+                newReport.getCondition().ordinal());
         values.put(DbContract.PurityEntry.COLUMN_NAME_CONTAMINANT, newReport.getContaminantPPM());
         values.put(DbContract.PurityEntry.COLUMN_NAME_DATE, newReport.getDate().toString());
         values.put(DbContract.PurityEntry.COLUMN_NAME_LAT, newReport.getLatitude());
         values.put(DbContract.PurityEntry.COLUMN_NAME_LONG, newReport.getLongitude());
         values.put(DbContract.PurityEntry.COLUMN_NAME_VIRUS, newReport.getVirusPPM());
 
-        Cursor c = db.query(DbContract.PurityEntry.TABLE_NAME, null, "_id = (SELECT MAX(_id) FROM " + DbContract.PurityEntry.TABLE_NAME + ")", null, null, null, null);
+        Cursor c = db.query(DbContract.PurityEntry.TABLE_NAME, null, "_id = (SELECT MAX(_id) FROM "
+                + DbContract.PurityEntry.TABLE_NAME + ")", null, null, null, null);
 
         if(c.moveToFirst()) {
-            values.put(DbContract.PurityEntry._ID, c.getInt(c.getColumnIndex(DbContract.PurityEntry._ID)) + 1);
+            values.put(DbContract.PurityEntry._ID,
+                    c.getInt(c.getColumnIndex(DbContract.PurityEntry._ID)) + 1);
         } else {
             values.put(DbContract.PurityEntry._ID, 1);
         }
@@ -79,24 +82,31 @@ public class PurityReportList {
         );
 
         while(c.moveToNext()) {
-            String author = c.getString(c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_AUTHOR));
+            String author = c.getString(
+                    c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_AUTHOR));
             int num = c.getInt(c.getColumnIndex(DbContract.PurityEntry._ID));
             double latitude = c.getDouble(c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_LAT));
-            double longitude = c.getDouble(c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_LONG));
+            double longitude = c.getDouble(
+                    c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_LONG));
             int virus = c.getInt(c.getColumnIndex((DbContract.PurityEntry.COLUMN_NAME_VIRUS)));
-            PurityCondition condition = PurityCondition.values()[c.getInt(c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_CONDITION))];
-            int contaminant = c.getInt(c.getColumnIndex((DbContract.PurityEntry.COLUMN_NAME_CONTAMINANT)));
+            PurityCondition condition = PurityCondition.values()[c.getInt(
+                    c.getColumnIndex(DbContract.PurityEntry.COLUMN_NAME_CONDITION))];
+            int contaminant = c.getInt(
+                    c.getColumnIndex((DbContract.PurityEntry.COLUMN_NAME_CONTAMINANT)));
 
-            String target = c.getString(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_DATE));
+            String target = c.getString(
+                    c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_DATE));
             DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy", Locale.US);
-            Date result = new Date(); //if there is a problem reading the date, just set it to the current time
+            //if there is a problem reading the date, set it to the current time
+            Date result = new Date();
             try {
                 result = df.parse(target);
             } catch (ParseException ex){
                 ex.printStackTrace();
             }
 
-            list.add(new PurityReport(author, longitude, latitude, condition, contaminant, virus, result, num));
+            list.add(new PurityReport(
+                    author, longitude, latitude, condition, contaminant, virus, result, num));
         }
         c.close();
 

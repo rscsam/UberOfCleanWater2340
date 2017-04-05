@@ -50,11 +50,13 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         Spinner latitudeSpinner = (Spinner) findViewById(R.id.graph_latitude_spinner);
         Spinner longitudeSpinner = (Spinner) findViewById(R.id.graph_longitude_spinner);
 
-        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterReport.latitudeHemispheres);
+        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, WaterReport.latitudeHemispheres);
         latitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         latitudeSpinner.setAdapter(latitudeAdapter);
 
-        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterReport.longitudeHemispheres);
+        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, WaterReport.longitudeHemispheres);
         longitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         longitudeSpinner.setAdapter(longitudeAdapter);
     }
@@ -73,11 +75,16 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         View rgView = typeRG.findViewById(button);
         int selection = typeRG.indexOfChild(rgView);
         final String yearET = ((EditText) findViewById(R.id.graph_year_et)).getText().toString();
-        final String proximityET = ((EditText) findViewById(R.id.proximity_et)).getText().toString();
-        final String latitudeET = ((EditText) findViewById(R.id.graph_latitude_et)).getText().toString();
-        final String longitudeET = ((EditText) findViewById(R.id.graph_longitude_et)).getText().toString();
-        final String longHemisphere = (String) ((Spinner) findViewById(R.id.graph_longitude_spinner)).getSelectedItem();
-        final String latHemisphere = (String) ((Spinner) findViewById(R.id.graph_latitude_spinner)).getSelectedItem();
+        final String proximityET = ((EditText) findViewById(
+                R.id.proximity_et)).getText().toString();
+        final String latitudeET = ((EditText) findViewById(
+                R.id.graph_latitude_et)).getText().toString();
+        final String longitudeET = ((EditText) findViewById(
+                R.id.graph_longitude_et)).getText().toString();
+        final String longHemisphere = (String) ((Spinner) findViewById(
+                R.id.graph_longitude_spinner)).getSelectedItem();
+        final String latHemisphere = (String) ((Spinner) findViewById(
+                R.id.graph_latitude_spinner)).getSelectedItem();
         double lat;
         double longitude;
         double proximity;

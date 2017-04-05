@@ -60,11 +60,13 @@ public class RegistrationActivity extends AppCompatActivity {
             accountType = AccountType.Admin;
         }
 
-        if (RegistrationData.addUser(db, new User(null, accountType, usernameET.getText().toString(),
-                passwordET.getText().toString(), null, null, null))) {
+        if (RegistrationData.addUser(db, new User(null, accountType,
+                usernameET.getText().toString(), passwordET.getText().toString(),
+                null, null, null))) {
             Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
             finish();
-        } else if (usernameET.getText().toString().isEmpty() || passwordET.getText().toString().isEmpty()) {
+        } else if (usernameET.getText().toString().isEmpty() ||
+                passwordET.getText().toString().isEmpty()) {
             Toast.makeText(this, "Username or password is blank", Toast.LENGTH_LONG).show();
             passwordET.setText("");
         } else {

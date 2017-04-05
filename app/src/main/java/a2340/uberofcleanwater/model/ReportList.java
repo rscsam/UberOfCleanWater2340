@@ -35,13 +35,17 @@ public class ReportList {
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_DATE, newReport.getDate().toString());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_LAT, newReport.getLatitude());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_LONG, newReport.getLongitude());
-        values.put(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION, newReport.getCondition().ordinal());
+        values.put(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION,
+                newReport.getCondition().ordinal());
         values.put(DbContract.WaterReportEntry.COLUMN_NAME_TYPE, newReport.getType().ordinal());
 
-        Cursor c = db.query(DbContract.WaterReportEntry.TABLE_NAME, null, "_id = (SELECT MAX(_id) FROM " + DbContract.WaterReportEntry.TABLE_NAME + ")", null, null, null, null);
+        Cursor c = db.query(DbContract.WaterReportEntry.TABLE_NAME, null, "_id = (" +
+                "SELECT MAX(_id) FROM " + DbContract.WaterReportEntry.TABLE_NAME + ")",
+                null, null, null, null);
 
         if(c.moveToFirst()) {
-            values.put(DbContract.WaterReportEntry._ID, c.getInt(c.getColumnIndex(DbContract.WaterReportEntry._ID)) + 1);
+            values.put(DbContract.WaterReportEntry._ID, c.getInt(c.getColumnIndex(
+                    DbContract.WaterReportEntry._ID)) + 1);
         } else {
             values.put(DbContract.WaterReportEntry._ID, 1);
         }
@@ -80,16 +84,23 @@ public class ReportList {
         );
 
         while(c.moveToNext()) {
-            String author = c.getString(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR));
+            String author = c.getString(c.getColumnIndex(
+                    DbContract.WaterReportEntry.COLUMN_NAME_AUTHOR));
             int num = c.getInt(c.getColumnIndex(DbContract.WaterReportEntry._ID));
-            double latitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LAT));
-            double longitude = c.getDouble(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_LONG));
-            WaterCondition condition = WaterCondition.values()[c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION))];
-            WaterType type = WaterType.values()[c.getInt(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_TYPE))];
+            double latitude = c.getDouble(c.getColumnIndex(
+                    DbContract.WaterReportEntry.COLUMN_NAME_LAT));
+            double longitude = c.getDouble(c.getColumnIndex(
+                    DbContract.WaterReportEntry.COLUMN_NAME_LONG));
+            WaterCondition condition = WaterCondition.values()[c.getInt(
+                    c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_CONDITION))];
+            WaterType type = WaterType.values()[c.getInt(
+                    c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_TYPE))];
 
-            String target = c.getString(c.getColumnIndex(DbContract.WaterReportEntry.COLUMN_NAME_DATE));
+            String target = c.getString(c.getColumnIndex(
+                    DbContract.WaterReportEntry.COLUMN_NAME_DATE));
             DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy", Locale.US);
-            Date result = new Date(); //if there is a problem reading the date, just set it to the current time
+            //if there is a problem reading the date, just set it to the current time
+            Date result = new Date();
             try {
                 result = df.parse(target);
             } catch (ParseException ex){

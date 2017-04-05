@@ -22,7 +22,7 @@ public class PurityReport extends AbstractReport {
 
     /**
      * Full Constructor with all related parameters.
-     * Does NOT automatically assign dateCreated and reportNum, instead taking them from the parameters.
+     * Does NOT automatically assign dateCreated and reportNum, instead taking them from the params
      * @param author - The name of the worker who submitted the report.
      * @param longitude - The longitude of the location for the report.
      * @param latitude - The latitude of the location for the report.
@@ -50,7 +50,8 @@ public class PurityReport extends AbstractReport {
      * @param ContaminantPPM - The parts per million of contaminants in the water as reported.
      * @param VirusPPM - The parts per million of viruses in the water as reported.
      */
-    public PurityReport(String author, Double longitude, Double latitude, PurityCondition condition, int ContaminantPPM, int VirusPPM) {
+    public PurityReport(String author, Double longitude, Double latitude,
+                        PurityCondition condition, int ContaminantPPM, int VirusPPM) {
         super(author, longitude, latitude, new Date(), idNum);
         this.condition = condition;
         this.contaminantPPM = ContaminantPPM;
