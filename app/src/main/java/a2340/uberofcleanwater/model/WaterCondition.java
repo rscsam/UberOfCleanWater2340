@@ -1,7 +1,7 @@
 package a2340.uberofcleanwater.model;
 
 /**
- * An enumeration used to list the different conditions of water to be used in a general water report.
+ * An enumeration used to list the different water conditions to be used in a general water report.
  * @author Seth Triplett
  * @version 1.0
  * @since 2017-02-23

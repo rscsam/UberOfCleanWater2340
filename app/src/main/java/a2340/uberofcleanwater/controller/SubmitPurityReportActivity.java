@@ -68,26 +68,36 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         Spinner latitudeSpinner = (Spinner) findViewById(R.id.lat_spinner);
         Spinner longitudeSpinner = (Spinner) findViewById(R.id.longitude_spinner);
 
-        ArrayAdapter<String> conditionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, PurityReport.legalConditions);
+        ArrayAdapter<String> conditionAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, PurityReport.legalConditions);
         conditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         conditionSpinner.setAdapter(conditionAdapter);
 
-        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, PurityReport.latitudeHemispheres);
+        ArrayAdapter<String> latitudeAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, PurityReport.latitudeHemispheres);
         latitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         latitudeSpinner.setAdapter(latitudeAdapter);
 
-        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, PurityReport.longitudeHemispheres);
+        ArrayAdapter<String> longitudeAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, PurityReport.longitudeHemispheres);
         longitudeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         longitudeSpinner.setAdapter(longitudeAdapter);
 
         DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Toast.makeText(this, "Location permission need to auto-generate Latitude and Longitude.", Toast.LENGTH_LONG).show();
+        if (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Toast.makeText(this,
+                        "Location permission need to auto-generate Latitude and Longitude.",
+                        Toast.LENGTH_LONG).show();
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, MY_ACCESS_FINE_LOCATION_REQUEST);
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_ACCESS_FINE_LOCATION_REQUEST);
             }
         } else {
             setLatLong();
@@ -95,16 +105,20 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         if (requestCode == MY_ACCESS_FINE_LOCATION_REQUEST) {
-            if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            if ((grantResults.length > 0) && (grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED)) {
                 setLatLong();
             }
         }
     }
 
     private void setLatLong () {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
             LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
             loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -129,7 +143,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
                 latitudeET.setText(latText);
                 longitudeET.setText(lngText);
             } else {
-                Toast.makeText(this, "Location could not be auto-generated. Is GPS enabled?", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Location could not be auto-generated. Is GPS enabled?",
+                        Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -194,7 +209,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         }
         try {
             latitude = Double.parseDouble(latitudeET.getText().toString());
-            if (latitudeSpinner.getSelectedItem().toString().equals(PurityReport.latitudeHemispheres.get(1))) {
+            if (latitudeSpinner.getSelectedItem().toString().equals(
+                    PurityReport.latitudeHemispheres.get(1))) {
                 latitude *= -1;
             }
         } catch (NumberFormatException e) {
@@ -203,7 +219,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         }
         try {
             longitude = Double.parseDouble(longitudeET.getText().toString());
-            if (longitudeSpinner.getSelectedItem().toString().equals(PurityReport.longitudeHemispheres.get(0))) {
+            if (longitudeSpinner.getSelectedItem().toString().equals(
+                    PurityReport.longitudeHemispheres.get(0))) {
                 longitude *= -1;
             }
         } catch (NumberFormatException e) {
@@ -211,12 +228,15 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
             return;
         }
         if ((latitude < MIN_LAT) || (latitude > MAX_LAT)) {
-            Toast.makeText(this, "Latitude is not in the range -90 to 90", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Latitude is not in the range -90 to 90",
+                    Toast.LENGTH_LONG).show();
         }
         else if ((longitude < MIN_LONG) || (longitude > MAX_LONG)) {
-            Toast.makeText(this, "Longitude is not in the range -180 to 180", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Longitude is not in the range -180 to 180",
+                    Toast.LENGTH_LONG).show();
         } else {
-            PurityReport purityReport = new PurityReport(nameString, longitude, latitude, PurityCondition.valueOf(condition), contaminant, virus);
+            PurityReport purityReport = new PurityReport(nameString, longitude,
+                    latitude, PurityCondition.valueOf(condition), contaminant, virus);
             PurityReportList.addReport(db, purityReport);
             Toast.makeText(this, "Purity Report successfully submitted", Toast.LENGTH_LONG).show();
             finish();

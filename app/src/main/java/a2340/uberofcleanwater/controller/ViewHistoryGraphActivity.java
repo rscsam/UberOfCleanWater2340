@@ -134,7 +134,8 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         redrawGraph(condenseIntoMonthlyAverages(reports, selection));
     }
 
-    private List<PurityReport> reportsInProximity(double lat, double longitude, double proximity, String year) {
+    private List<PurityReport> reportsInProximity(double lat, double longitude,
+                                                  double proximity, String year) {
         Iterable<PurityReport> allReports = PurityReportList.getReportList(db);
         List<PurityReport> reports = new ArrayList<>();
 
@@ -184,7 +185,8 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
     private void redrawGraph(double[] ppmData) {
         BarChart chart = (BarChart) findViewById(R.id.history_graph_bar_chart);
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+                "Oct", "Nov", "Dec"};
         List<BarEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import a2340.uberofcleanwater.R;
@@ -69,7 +68,8 @@ public class WaterReportAdapter extends RecyclerView.Adapter<WaterReportAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         WaterReport wr = mDataSet.get(position);
         holder.coordsTV.setText("(" + wr.getLatitude() + ", " + wr.getLongitude() + ")");
-        String dateText = wr.getDate().toString().substring(4, 10) + wr.getDate().toString().substring(23);
+        String dateText = wr.getDate().toString().substring(4, 10) +
+                wr.getDate().toString().substring(23);
         holder.dateTV.setText(dateText);
         holder.authorTV.setText(wr.getAuthor());
 

@@ -11,7 +11,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.controller.adapter.MapMarkerAdapter;

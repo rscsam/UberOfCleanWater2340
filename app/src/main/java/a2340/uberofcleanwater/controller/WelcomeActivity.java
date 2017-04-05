@@ -150,7 +150,9 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     public void submitPurityReportOnClick(View view) {
         if (currentUser.getType() == AccountType.User) {
-            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,
+                    "ERROR: User does not have proper authority to access this feature.",
+                    Toast.LENGTH_LONG).show();
         } else {
             Intent submitPurity = new Intent(this, SubmitPurityReportActivity.class);
             submitPurity.putExtra("username", currentUser.getUserName());
@@ -172,7 +174,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Toast.makeText(this, display2, Toast.LENGTH_LONG).show();
         */
         if (currentUser.getType() == AccountType.User) {
-            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,
+                    "ERROR: User does not have proper authority to access this feature.",
+                    Toast.LENGTH_LONG).show();
         } else {
             Intent viewPurity = new Intent(this, ViewPurityReportsActivity.class);
             startActivity(viewPurity);
@@ -187,7 +191,8 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     public void historyGraphOnClick(View view) {
         if (currentUser.getType() == AccountType.User) {
-            Toast.makeText(this, "ERROR: User does not have proper authority to access this feature.",
+            Toast.makeText(this,
+                    "ERROR: User does not have proper authority to access this feature.",
                     Toast.LENGTH_LONG).show();
         } else {
             Intent viewHistory = new Intent(this, ViewHistoryGraphActivity.class);

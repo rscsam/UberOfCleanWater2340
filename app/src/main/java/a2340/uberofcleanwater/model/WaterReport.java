@@ -19,8 +19,10 @@ public class WaterReport extends AbstractReport{
     private final WaterType type;
     private final WaterCondition condition;
 
-    public static final List<String> legalTypes = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
-    public static final List<String> legalConditions = Arrays.asList("Waste", "Treatable/Clear", "Treatable/Muddy", "Potable");
+    public static final List<String> legalTypes = Arrays.asList("Bottled",
+            "Well", "Stream", "Lake", "Spring", "Other");
+    public static final List<String> legalConditions = Arrays.asList("Waste",
+            "Treatable/Clear", "Treatable/Muddy", "Potable");
     public static final List<String> latitudeHemispheres = Arrays.asList("North", "South");
     public static final List<String> longitudeHemispheres = Arrays.asList("West", "East");
 
@@ -36,7 +38,8 @@ public class WaterReport extends AbstractReport{
      * @param date - The date the report was created
      * @param idNum - The ID number of the report
      */
-    WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition, Date date, int idNum) {
+    WaterReport(String author, double longitude, double latitude, WaterType type,
+                WaterCondition condition, Date date, int idNum) {
         super(author, longitude, latitude, date, idNum);
         this.type = type;
         this.condition = condition;
@@ -51,7 +54,8 @@ public class WaterReport extends AbstractReport{
      * @param type - Type of the water (bottled, lake, etc...)
      * @param condition - Condition of the water (potable, waste, etc...)
      */
-    public WaterReport(String author, double longitude, double latitude, WaterType type, WaterCondition condition) {
+    public WaterReport(String author, double longitude, double latitude, WaterType type,
+                       WaterCondition condition) {
         super(author, longitude, latitude, new Date(), idNum);
         this.type = type;
         this.condition = condition;
