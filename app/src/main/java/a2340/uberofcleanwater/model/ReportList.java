@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import a2340.uberofcleanwater.database.DbContract;
@@ -112,5 +113,35 @@ public class ReportList {
         c.close();
 
         return list;
+    }
+
+    public static List<PurityReport> getReportsInProximity(double lat, double longitude,
+                                                  double proximity, String year,
+                                                  SQLiteDatabase db) {
+        Iterable<PurityReport> allReports = PurityReportList.getReportList(db);
+        List<PurityReport> reports = new ArrayList<>();
+
+        double minLat = lat - proximity;
+        double maxLat = lat + proximity;
+        double minLong = longitude - proximity;
+        double maxLong = longitude + proximity;
+
+        for (PurityReport r : allReports) {
+            double r_lat = r.getLatitude();
+            double r_long = r.getLongitude();
+            Date r_date = r.getDate();
+
+            int r_year = r_date.getYear() + 1900;
+            int intYear = Integer.parseInt(year);
+
+            if ((r_lat >= minLat) && (r_lat <= maxLat)) {
+                if ((r_long >= minLong) && (r_long <= maxLong)) {
+                    if (r_year == intYear) {
+                        reports.add(r);
+                    }
+                }
+            }
+        }
+        return reports;
     }
 }
