@@ -133,8 +133,9 @@ public class User {
      * @return true if the profile is complete, false otherwise
      */
     public boolean isProfileComplete() {
-        return !((name == null) || (emailAddress == null) || (title == null) ||
-                (homeAddress == null)) && !(name.isEmpty() || emailAddress.isEmpty()
+        return !((name == null) || (emailAddress == null)
+                || (title == null) || (homeAddress == null))
+                && !(name.isEmpty() || emailAddress.isEmpty()
                 || title.isEmpty() || homeAddress.isEmpty());
     }
 }
