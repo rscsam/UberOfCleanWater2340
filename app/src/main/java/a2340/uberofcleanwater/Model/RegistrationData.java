@@ -174,7 +174,8 @@ public class RegistrationData {
         if(c.moveToFirst()) {
             user = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_USERNAME));
             pass = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_PASSWORD));
-            type = AccountType.values()[c.getInt(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE))];
+            type = AccountType.values()[c.getInt(c.getColumnIndex(
+                    DbContract.UserEntry.COLUMN_NAME_ACCOUNTTYPE))];
             name = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_NAME));
             email = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_EMAIL));
             address = c.getString(c.getColumnIndex(DbContract.UserEntry.COLUMN_NAME_ADDRESS));
@@ -205,7 +206,8 @@ public class RegistrationData {
         values.put(DbContract.UserEntry.COLUMN_NAME_TITLE, user.getTitle());
 
         String[] arg = {user.getUserName()};
-        db.update(DbContract.UserEntry.TABLE_NAME, values, DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
+        db.update(DbContract.UserEntry.TABLE_NAME, values,
+                DbContract.UserEntry.COLUMN_NAME_USERNAME + " = ?", arg);
 
     }
 
