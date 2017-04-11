@@ -115,6 +115,15 @@ public class ReportList {
         return list;
     }
 
+    /**
+     * Returns reports within a certain radius
+     * @param lat the latitude
+     * @param longitude the longitude
+     * @param proximity the distance reports can be
+     * @param year the year
+     * @param db the database being accessed
+     * @return the list of reports
+     */
     public static List<PurityReport> getReportsInProximity(double lat, double longitude,
                                                   double proximity, String year,
                                                   SQLiteDatabase db) {

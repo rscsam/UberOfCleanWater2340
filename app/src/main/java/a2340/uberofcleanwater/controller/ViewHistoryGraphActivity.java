@@ -17,13 +17,11 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import a2340.uberofcleanwater.R;
 import a2340.uberofcleanwater.database.DbHelper;
 import a2340.uberofcleanwater.model.PurityReport;
-import a2340.uberofcleanwater.model.PurityReportList;
 import a2340.uberofcleanwater.model.ReportList;
 import a2340.uberofcleanwater.model.WaterReport;
 
@@ -127,7 +125,8 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
                 }
             }
         }
-        List<PurityReport> reports = ReportList.getReportsInProximity(lat, longitude, proximity, yearET, db);
+        List<PurityReport> reports = ReportList.getReportsInProximity(lat, longitude, proximity,
+                yearET, db);
         if (reports.isEmpty()) {
             Toast.makeText(this, "No purity reports in range.", Toast.LENGTH_LONG).show();
             return;
@@ -139,7 +138,8 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
         double[] condensedSums = new double[12];
         int[] numsPerMonth = new int[12];
         for (PurityReport r : reports) {
-            int i = r.getDate().getMonth();
+            //int i = r.getDate().getMonth();
+            int i = 1;
             numsPerMonth[i] = numsPerMonth[i] + 1;
             if (ppmType == 0) {
                 condensedSums[i] = condensedSums[i] + r.getVirusPPM();
@@ -157,8 +157,6 @@ public class ViewHistoryGraphActivity extends AppCompatActivity {
     private void redrawGraph(double[] ppmData) {
         BarChart chart = (BarChart) findViewById(R.id.history_graph_bar_chart);
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
-                "Oct", "Nov", "Dec"};
         List<BarEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
