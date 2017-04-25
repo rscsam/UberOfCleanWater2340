@@ -1,8 +1,16 @@
 package a2340.uberofcleanwater.controller;
 
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,6 +38,28 @@ public class SubmitReportActivity extends AppCompatActivity{
 
     private String username;
     private SQLiteDatabase db;
+
+    private final int MY_ACCESS_FINE_LOCATION_REQUEST = 1;
+    private Location loc;
+
+    /**
+     * Location listener used to update the location from the GPS.
+     */
+    private final LocationListener listener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            setLoc(location);
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+        @Override
+        public void onProviderEnabled(String provider) {}
+
+        @Override
+        public void onProviderDisabled(String provider) {}
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +95,76 @@ public class SubmitReportActivity extends AppCompatActivity{
 
         DbHelper mDbHelper = new DbHelper(this);
         db = mDbHelper.getWritableDatabase();
-
+        if (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Toast.makeText(this,
+                        "Location permission need to auto-generate Latitude and Longitude.",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_ACCESS_FINE_LOCATION_REQUEST);
+            }
+        } else {
+            setLatLong();
+        }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        if (requestCode == MY_ACCESS_FINE_LOCATION_REQUEST) {
+            if ((grantResults.length > 0) && (grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED)) {
+                setLatLong();
+            }
+        }
+    }
 
+    private void setLatLong () {
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+            loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            EditText latitudeET = (EditText) findViewById(R.id.latitude_in);
+            EditText longitudeET = (EditText) findViewById(R.id.longitude_in);
+            Spinner latitudeSP = (Spinner) findViewById(R.id.latitude_spinner);
+            Spinner longitudeSP = (Spinner) findViewById(R.id.longitude_spinner);
+            if (loc != null) {
+                Double lat = loc.getLatitude();
+                Double lng = loc.getLongitude();
+                if (lat < 0) {
+                    latitudeSP.setSelection(WaterReport.latitudeHemispheres.indexOf("South"));
+                    lat *= -1;
+                }
+                if (lng > 0) {
+                    longitudeSP.setSelection(WaterReport.longitudeHemispheres.indexOf("East"));
+                } else {
+                    lng *= -1;
+                }
+                String latText = lat.toString();
+                String lngText = lng.toString();
+                latitudeET.setText(latText);
+                longitudeET.setText(lngText);
+            } else {
+                Toast.makeText(this, "Location could not be auto-generated. Is GPS enabled?",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    /**
+     * Helper class which sets the location to most recently found location.
+     * @param location - Location received by the LocationListener.
+     */
+    private  void setLoc(Location location) {
+        loc = location;
+    }
 
     /**
      * saves all the changes to the user object and then exits the activity
